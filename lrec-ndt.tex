@@ -1,5 +1,6 @@
 \documentclass[10pt,a4paper]{article}
 
+\usepackage{ctable}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lrec2006}
@@ -29,6 +30,41 @@ Non enim do, placeat art party delectus officia 90's assumenda adipisicing.
 \end{itemize}
 
 \section{Texts}
+\ctable[botcap,
+    caption={Statistics for texts in the Bokmål section},
+    label=tbl:stats-bm
+]{lrr}{}{
+        \FL
+        Source          & Sentences & Tokens \ML
+        Aftenposten     &  5646 &  92313 \NN
+        Blogg           &   706 &  22330 \NN
+        Bergens Tidende &  2551 &  38900 \NN
+        Dagbladet       &  4436 &  60720 \NN
+        Klassekampen    &   919 &  16486 \NN
+        NOU             &   477 &   8360 \NN
+        Sunnmørsposten  &  1201 &  19109 \NN
+        Storting        &  1280 &  22146 \NN
+        VG              &   868 &  12821 \ML
+        Total           & 18084 & 282075
+        \LL
+    }
+
+\ctable[botcap,
+    caption={Statistics for texts in the Nynorsk section},
+    label=tbl:stats-nn
+]{lrr}{}{
+        \FL
+        Source             & Sentences & Tokens \ML
+        Blogg              &   579 &   9676 \NN
+        Dag og Tid         &  5278 &  88982 \NN
+        Firda              &  3401 &  50579 \NN
+        Klassekampen       &  2215 &  39739 \NN
+        Mål og Meining     &   976 &  25113 \NN
+        Vest-Telemark blad &  2956 &  46990 \ML
+        Total              & 15405 & 263079
+        \LL
+    }
+
 Commodo voluptate laboris, dolor Tonx whatever trust fund. Salvia cliche plaid
 Brooklyn, veniam Terry Richardson cardigan slow-carb craft beer ullamco
 tattooed. Wayfarers id banh mi jean shorts ex deserunt. Master cleanse beard
