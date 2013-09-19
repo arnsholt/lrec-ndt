@@ -110,6 +110,21 @@ labore gentrify salvia pour-over jean shorts Echo Park PBR.
 \subsection{Annotators and annotation work flow}
 \subsection{Preprocessing}
 \subsection{Syntactic preprocessing (Arne)}
+\ctable[botcap,
+    caption={Preprocessor accuracies. Unlabeled (UAS) and Labeled (LAS)
+    attachment scores, and label accuracies (Labels).},
+    label=tbl:parsers,
+    notespar,
+]{lr@{.}lr@{.}lr@{.}l}{Table too wide. Maybe abbreviate citation to something
+like ``S and Ø (2012)''?}{
+        \FL
+Parser & \multicolumn{2}{c}{UAS} & \multicolumn{2}{c}{LAS} & \multicolumn{2}{c}{Labels} \ML
+CG (BM) & 79&39\% & 72&45\% & 82&10\% \NN
+CG (NN) & 80&16\% & 74&76\% & 84&84\% \NN
+\citeA{Skj:Ovr12} (BM) & 87&54\% & 84&63\% & 89&63\%
+        \LL
+    }
+
 \subsection{Inter-annotator agreement (Arne)}
 
 \section{Dependency parsing (Arne \& Lilja)}
