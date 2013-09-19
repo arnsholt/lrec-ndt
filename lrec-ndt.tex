@@ -1,8 +1,12 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[11pt,a4paper]{article}
 
+\usepackage{ctable}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lrec2006}
+\usepackage{apacite}
+
+\bibliographystyle{apacite}
 
 \title{The Norwegian Dependency Treebank}
 \author{Folk}
@@ -11,17 +15,45 @@
 \maketitle
 
 \section{Introduction (Lilja)}
-Banksy Marfa meggings, cupidatat pug non Vice asymmetrical mlkshk deep v.
-Chillwave kale chips exercitation, beard mlkshk consectetur Neutra +1
-Helvetica letterpress irure est Bushwick. Plaid vinyl 3 wolf moon anim,
-ullamco kogi eu sint slow-carb hoodie. Brooklyn selfies twee pour-over bitters
-squid. Labore plaid master cleanse mustache, retro deep v 8-bit dreamcatcher.
-Ethnic chillwave VHS bitters umami, biodiesel Odd Future sapiente DIY twee.
-Non enim do, placeat art party delectus officia 90's assumenda adipisicing.
+A syntactic treebank constitutes an important language resource in
+establishing a set of natural language processing tools for a
+language and may be employed for central tasks such as part-of-speech
+tagging and syntactic parsing. For the past decade, dependency
+analysis has become an increasinlgy popular form of syntactic analysis
+and has been claimed to strike a balance between a depth of analysis
+sufficient for many down-stream applications and accuracy and
+efficiency in parsing with these types representations. The CoNLL
+shared tasks devoted to dependency parsing and joint syntactic and
+semantic parsing,
+\cite<see e.g.,>{Niv:Hal:Kub:07,Haj:Cia:Joh:09}, have been instrumental in
+establishing a common set of dependency treebanks for a range of
+languages such as English, Swedish, Czech and Arabic, \footnote{Note
+  that several of the treebanks employed for the shared task were not
+  originally dependency treebanks, but rather converted from
+  phrase-structure representations.}  thus enabling multilingual evaluation of different systems.  The increased
+availability of dependency parsers has spurred down-stream use of
+dependency representations in diverse tasks such as Machine Translation \shortcite{Din:Pal:05}, Sentiment Analysis \shortcite{Wil:Wie:Hof:09} and Negation Resolution \shortcite{Lap:Vel:Ovr:12}.
+
+Until recently, there has been no publicly available (dependency)
+treebank for Norwegian.\footnote{Possibly comment on INESS?} Hence,
+the progress in parsing and applications described above have not been
+possible for Norwegian.  At present, however, the Language Bank,
+hosted at the Norwegian National Library, is in the process of
+completing a two year project with the aim of producing a dependency
+treebank for Norwegian. 
+
+In this paper we present the Norwegian Dependency Treebank (NDT), a
+syntactic treebank which encompasses treebanks for both variants of
+Norwegian (Bokm{\aa}l and Nynorsk)\footnote{On the distinction between
+  BM and NN}. In the following, we describe the main annotation
+principles employed in the syntactic analysis of the treebank and
+discuss the selection of texts. We then go on to describe the
+annotation process in some detail. Finally, we present first results
+for data-driven dependency parsing of Norwegian.
 
 \section{Annotation principles (PE)}
 \begin{itemize}
-    \item Leksikalse/funksjonelle hoder
+    \item Leksikalske/funksjonelle hoder
     \item Verbpartikler
     \item Selekterte vs. uselekterte PP
     \item Kanskje koordinasjon i lang paper 
@@ -30,6 +62,41 @@ Non enim do, placeat art party delectus officia 90's assumenda adipisicing.
 \end{itemize}
 
 \section{Texts}
+\ctable[botcap,
+    caption={Statistics for texts in the Bokmål section},
+    label=tbl:stats-bm
+]{lrr}{}{
+        \FL
+        Source          & Sentences & Tokens \ML
+        Aftenposten     &  5646 &  92313 \NN
+        Blogg           &   706 &  22330 \NN
+        Bergens Tidende &  2551 &  38900 \NN
+        Dagbladet       &  4436 &  60720 \NN
+        Klassekampen    &   919 &  16486 \NN
+        NOU             &   477 &   8360 \NN
+        Sunnmørsposten  &  1201 &  19109 \NN
+        Storting        &  1280 &  22146 \NN
+        VG              &   868 &  12821 \ML
+        Total           & 18084 & 282075
+        \LL
+    }
+
+\ctable[botcap,
+    caption={Statistics for texts in the Nynorsk section},
+    label=tbl:stats-nn
+]{lrr}{}{
+        \FL
+        Source             & Sentences & Tokens \ML
+        Blogg              &   579 &   9676 \NN
+        Dag og Tid         &  5278 &  88982 \NN
+        Firda              &  3401 &  50579 \NN
+        Klassekampen       &  2215 &  39739 \NN
+        Mål og Meining     &   976 &  25113 \NN
+        Vest-Telemark blad &  2956 &  46990 \ML
+        Total              & 15405 & 263079
+        \LL
+    }
+
 Commodo voluptate laboris, dolor Tonx whatever trust fund. Salvia cliche plaid
 Brooklyn, veniam Terry Richardson cardigan slow-carb craft beer ullamco
 tattooed. Wayfarers id banh mi jean shorts ex deserunt. Master cleanse beard
@@ -39,13 +106,10 @@ Apparel cred selvage. Keffiyeh chia banjo Banksy laborum odio twee, craft beer
 labore gentrify salvia pour-over jean shorts Echo Park PBR.
 
 \section{Annotation process}
-\begin{itemize}
-    \item Annotators
-    \item Workflow
-    \item Preprocessing
-    \item Syntactic preprocessing (Arne)
-    \item Agreement (Arne)
-\end{itemize}
+\subsection{Annotators and annotation work flow}
+\subsection{Preprocessing}
+\subsection{Syntactic preprocessing (Arne)}
+\subsection{Inter-annotator agreement (Arne)}
 
 \section{Dependency parsing (Arne \& Lilja)}
 Wes Anderson elit butcher disrupt lomo, selvage mlkshk pickled whatever seitan
@@ -55,5 +119,10 @@ beard wayfarers commodo put a bird on it gluten-free veniam. Umami paleo
 kitsch quis, qui semiotics ea vero. Irony lo-fi cliche sunt. Mustache before
 they sold out cliche, polaroid Blue Bottle voluptate aliquip swag hashtag
 irony adipisicing. 8-bit ennui eu, +1 actually lo-fi aute adipisicing esse.
+
+%\newpage
+%\onecolumn
+\clearpage
+\bibliography{ndt}
 
 \end{document}
