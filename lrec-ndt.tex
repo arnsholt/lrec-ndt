@@ -51,6 +51,8 @@ discuss the selection of texts. We then go on to describe the
 annotation process in some detail. Finally, we present first results
 for data-driven dependency parsing of Norwegian.
 
+%311 words
+
 \section{Annotation principles (PE)}
 \begin{itemize}
     \item Leksikalske/funksjonelle hoder
@@ -128,13 +130,40 @@ CG (NN) & 80&16\% & 74&76\% & 84&84\% \NN
 \subsection{Inter-annotator agreement (Arne)}
 
 \section{Dependency parsing (Arne \& Lilja)}
-Wes Anderson elit butcher disrupt lomo, selvage mlkshk pickled whatever seitan
-nisi squid sriracha. Eiusmod vero Austin, incididunt pour-over Odd Future
-squid hashtag. Sint twee gastropub, qui velit direct trade lo-fi cornhole
-beard wayfarers commodo put a bird on it gluten-free veniam. Umami paleo
-kitsch quis, qui semiotics ea vero. Irony lo-fi cliche sunt. Mustache before
-they sold out cliche, polaroid Blue Bottle voluptate aliquip swag hashtag
-irony adipisicing. 8-bit ennui eu, +1 actually lo-fi aute adipisicing esse.
+An important aspect of treebank annotation relates to its \emph{parsability},
+i.e. the quality of syntactic parsers that can be acquired based on
+the treebank data.  In order to investigate the parser quality we can
+expect from NDT, we have evaluated three state-of-the-art dependency
+parsers on the material: Maltparser \shortcite{Niv:Hal:Nil:06},
+MST-parser \shortcite{McD:Per:Rib:Haj:05} and the parser of
+\citeA{Boh:Niv:12}.  
+
+For these experiments, both portions of the treebank (Bokm{\aa}l and
+Nynorsk) were split into 80-10-10 train, development and test sets.
+Standard evaluation metrics in dependency parsing are unlabeled and
+labeled attachment scores (UAS, LAS; implemented by the CoNLL
+\textsf{eval.pl} scorer).  These measure the proportion of tokens
+which are correctly attached to their head token and, for LAS,
+furthermore have been assigned the correct dependency label.
+
+%121 words
+
+
+\begin{table}
+\centering
+\begin{tabular}{lll|ll}
+\hline
+& \multicolumn{2}{c}{Bokm{\aa}l} & \multicolumn{2}{c}{Nynorsk}\\
+ & UAS & LAS  & UAS & LAS \\\hline
+Malt default & 88.27 & 85.03 & 87.54 & 83.82\\
+Malt optimized & 92.19 & 89.82 & 91.57 & 88.98\\\hline
+\end{tabular}
+\caption{Dependency parsing results for NDT}
+  \label{tb:parsing}
+\end{table}
+
+Table \ref{tb:parsing} presents the dependency parsing results obtained for NDT.
+
 
 %\newpage
 %\onecolumn
