@@ -5,6 +5,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lrec2006}
 \usepackage{apacite}
+\usepackage{covington}
 
 \bibliographystyle{apacite}
 
@@ -24,7 +25,7 @@ and has been claimed to strike a balance between a depth of analysis
 sufficient for many down-stream applications and accuracy and
 efficiency in parsing with these types representations. The CoNLL
 shared tasks devoted to dependency parsing and joint syntactic and
-semantic parsing,
+2semantic parsing,
 \cite<see e.g.,>{Niv:Hal:Kub:07,Haj:Cia:Joh:09}, have been instrumental in
 establishing a common set of dependency treebanks for a range of
 languages such as English, Swedish, Czech and Arabic, \footnote{Note
@@ -52,16 +53,61 @@ annotation process in some detail. Finally, we present first results
 for data-driven dependency parsing of Norwegian.
 
 \section{Annotation principles (PE)}
-\begin{itemize}
-    \item Leksikalske/funksjonelle hoder
-    \item Verbpartikler
-    \item Selekterte vs. uselekterte PP
-    \item Kanskje koordinasjon i lang paper 
-    \item Greatest hits
-    \item Eksempelgraf
-\end{itemize}
+NDT is released in the CoNLL format, a tab-separated table consisting of the following 10 fields: token index, word form, lemma, coarse-grained part-of-speech (POS), fine-grained POS, morphological features, index of head, dependency relation and two fields which are left blank in NDT (\cite{Niv:Hal:Kub:07}). The lemmatization and morphological tagging follows quite closely the Oslo-Bergen Tagger (OBT), but a few adaptions have been made, notably for spelling variants which do not comply for the official norm for Bokmål and Nynorsk (cf. \cite{Joh:Hag:No:Lyn:2011}, \cite{Sol:2013}).
+
+
+Independent syntactic annotation guidelines have been developed for NDT (<ref> retningslinjene). When developing the annotation guidelines, four fundamental principles had to be taken into consideration: 1. The annotation had to be as linguistically adequate as possible. The Norwegian Reference Grammar (\cite{Faa:Lie:Van:97}) was used as norm. 2. It had to be possible for annotators to implement the analyzes consistently. 3. As the size of the treebank matters for most potential users, the annotators should be able to annotate relatively quickly, without spending too much time pondering over the correct analysis of specific constructions. 4. It should be relatively easy to make queries for specific constructions, using treebank query tools (e.g. TreeQuery <ref>). In what remains of this section, we will show examples of how we tried to implement these principles:
+
+\subsection{Adverbials}
+In treebanks comparable to NDT, e.g. the Swedish treebank Talbanken (<ref>), there are separate dependency relations for different types of adverbials, such as time adverbials, manner adverbials and place adverbials. Some treebanks, e.g. PROIEL (<ref>), distinguish between adverbials selected by specific predicates, such as motion verbs, and adverbial modifiers which are not obligatory. There are good linguistic reasons for making such distinctions. However, we found that it would be difficult to do so and at the same time comply with the consistency and time constraints of principle 2 and 3: While it would be obvious to which category many adverbials belong, there would also be a lot of borderline cases. Unless the guidelines contained rules which were clear and easy to follow for such cases,chances are high that an annotator would not be able to annotate similar cases in a uniform manner, and inter-annotator consistency would also be difficult to obtain. And even with such rules in place, annotators would spend a considerable amount of time deliberating which dependency relation to choose. We have therefore chosen a more shallow analysis: All adverbials, regardless of type and of whether or not they are selected, receive a uniform dependency relation - ADV.
+
+\subsection{Transitive and intransitive prepositions}
+In some cases the pursuit of linguistic adequacy has been given priority. The sentences (\ref{ex:intrans}) and (\ref{ex:trans}) are an example of such a case:
+
+\begin{examples}
+\item\label{ex:intrans}
+\gll Per setter på CD-en.
+Per puts on CD+the
+\glt 'Per puts on the CD.'
+\glend
+
+\item\label{ex:trans}
+\gll Per sitter på stolen.
+Per sits on chair+the
+\glt 'Per sits on the chair.'
+\glend
+\end{examples}
+
+In both (\ref{ex:intrans}) and (\ref{ex:trans}) the preposition \emph{på} is followed by a noun. There are, however, strong reasons for analyzing the sentences differently. In (\ref{ex:trans}), the noun is clearly a complement to the preposition: The preposition and the noun are semantically connected, they behave as a single constituent, and the complement retains its position after the preposition if it is pronominalized. In (\ref{ex:intrans}), on the other hand, there is no obvious semantic connection between the preposition and the noun, the two words don't form a constituent together, and if the noun is pronominalized, it can, and usually will, precede the preposition. In NDT, the noun in (\ref{ex:intrans}) would be made dependent on the verb with the dependency relation for direct objects, DOBJ. The noun in (\ref{ex:trans}) would be made dependent on the preposition with the dependency relation of prepositional complements, PUTFYLL.
+
+Annotators frequently meet preposition-noun sequences which are much less straightforward than in these examples, and they need to deliberate whether one or the other analysis is correct. We have, however, chosen to retain this distinction, to make sure that the analyses are acceptable from a linguistic point of view and also in order to achieve a uniform analysis of sentences such as (\ref{ex:intrans}) and cases where the object noun or pronoun does not follow the intransitive preposition. To ensure consistency and a high annotation speed, the annotation guidelines have a number of syntactic tests which the annotators use to distinguish between the construction (<ref> retningslinjene s 54-56).
+
+\subsection{Complementizers}
+There is no obvious head-dependent relationship between complementizers and verbs or between functional and lexical heads in general, and there is therefore not a unique answer to how such a relationship should be represented in Dependency Grammar. In the original formulation of Dependency Grammar, the dependency relations were not used between function words and lexical words, but a different, symmetrical relation (cf. <ref> Tesnière 1965). This is not an option in Dependency Grammar treebanks, however, and treebanks vary with respect to the representation of such relations. In NDT, the verb is the head and the complementizer is a dependent on the verb. This choice is first and foremost motivated by the fourth principle stated above: that it should be easy to make queries for specific constructions. In Norwegian, complementizers are frequently dropped, as the following examples show (from NDT):
+
+\begin{examples}
+\item\label{ex:medat}
+\gll Nå tror lokale myndigheter at bortføringen var nøye planlagt.
+now believe local authorities that.comp abduction+the was carefully planned
+\glt 'Local authorities now believe that the abduction was carefully planned.'
+\glend
+
+\item\label{ex:utenat}
+\gll Jeg tror ikke det er tilfeldig.
+I believe not it is accidental
+\glt 'I don't belive that it is accidental.'
+\glend
+\end{examples}
+ 
+Clausal complements to verbs such as \emph{tro}, 'believe', occur both with the complementizer \emph{at}, as in (\ref{ex:medat}), and without any complementizer, as in (\ref{ex:utenat}). If the complementizer were the head, the complement clauses in (\ref{ex:medat}) and (\ref{ex:utenat}) would have had different heads, despite their obvious similarities. This, in turn, would make it significantly more difficult to formulate queries in e.g. TreeQuery, which cover both cases. The ability to retrieve constructions through queries has been important in the annotation process, notably in order to find annotation errors, and it will probably also be important to certain users of the treebank. In NDT, sentences such as (\ref{ex:medat}) and (\ref{ex:utenat}) are analyzed similarly: The (finite) verb of the clausal complement serves as head in both cases, and carry the dependency relation DOBJ (direct object), c.f. <figure 1 + 2>. Both will therefore be retrieved through a query for finite verbs with the dependency relation DOBJ.
+
+%<figure 1> - analysis of {ex:medat}
+
+%<figure 2> - analysis of {ex:utenat}
 
 \section{Texts}
+NDT currently consist of 282 000 tokens of Norwegian Bokmål and 263 000 tokens of Norwegian Nynorsk, but these numbers will grow somewhat until the end of the project period in January 2014. Comparable treebanks such as the Prague Dependency Treebank and the TIGER treebank, contain 
+
 \ctable[botcap,
     caption={Statistics for texts in the Bokmål section},
     label=tbl:stats-bm
@@ -96,6 +142,7 @@ for data-driven dependency parsing of Norwegian.
         Total              & 15405 & 263079
         \LL
     }
+
 
 Commodo voluptate laboris, dolor Tonx whatever trust fund. Salvia cliche plaid
 Brooklyn, veniam Terry Richardson cardigan slow-carb craft beer ullamco
