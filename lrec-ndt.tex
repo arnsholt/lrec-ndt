@@ -52,6 +52,8 @@ discuss the selection of texts. We then go on to describe the
 annotation process in some detail. Finally, we present first results
 for data-driven dependency parsing of Norwegian.
 
+%311 words
+
 \section{Annotation principles (PE)}
 NDT is released in the CoNLL format, a tab-separated table consisting of the following 10 fields: token index, word form, lemma, coarse-grained part-of-speech (POS), fine-grained POS, morphological features, index of head, dependency relation and two fields which are left blank in NDT (\cite{Niv:Hal:Kub:07}). The lemmatization and morphological tagging follows quite closely the Oslo-Bergen Tagger (OBT), but a few adaptions have been made, notably for spelling variants which do not comply for the official norm for Bokmål and Nynorsk (cf. \cite{Joh:Hag:No:Lyn:2011}, \cite{Sol:2013}).
 
@@ -109,37 +111,39 @@ Clausal complements to verbs such as \emph{tro}, 'believe', occur both with the 
 NDT currently consist of 282 000 tokens of Norwegian Bokmål and 263 000 tokens of Norwegian Nynorsk, but these numbers will grow somewhat until the end of the project period in January 2014. Comparable treebanks such as the Prague Dependency Treebank and the TIGER treebank, contain 
 
 \ctable[botcap,
-    caption={Statistics for texts in the Bokmål section},
+    caption={Statistics for texts in the Bokmål section. Number of sentences,
+    tokens and non-projective edges/sentences.},
     label=tbl:stats-bm
-]{lrr}{}{
+]{lrrr@{/}l}{}{
         \FL
-        Source          & Sentences & Tokens \ML
-        Aftenposten     &  5646 &  92313 \NN
-        Blogg           &   706 &  22330 \NN
-        Bergens Tidende &  2551 &  38900 \NN
-        Dagbladet       &  4436 &  60720 \NN
-        Klassekampen    &   919 &  16486 \NN
-        NOU             &   477 &   8360 \NN
-        Sunnmørsposten  &  1201 &  19109 \NN
-        Storting        &  1280 &  22146 \NN
-        VG              &   868 &  12821 \ML
-        Total           & 18084 & 282075
+        Source          & Sent. & Tok.   & \multicolumn{2}{c}{Non-proj.} \ML
+        Aftenposten     &  5646 &  92313 & 1497&1212 \NN
+        Blogg           &   706 &  22330 &  188&146  \NN
+        Bergens Tidende &  2551 &  38900 &  459&393  \NN
+        Dagbladet       &  4436 &  60720 &  763&643  \NN
+        Klassekampen    &   919 &  16486 &  247&194  \NN
+        NOU             &   477 &   8360 &  116&91   \NN
+        Sunnmørsposten  &  1201 &  19109 &  288&252  \NN
+        Storting        &  1280 &  22146 &  432&315  \NN
+        VG              &   868 &  12821 &  149&128  \ML
+        Total           & 18084 & 282075 & 4139&3374
         \LL
     }
 
 \ctable[botcap,
-    caption={Statistics for texts in the Nynorsk section},
+    caption={Statistics for texts in the Nynorsk section. Number of sentences,
+    tokens and non-projective edges/sentences.},
     label=tbl:stats-nn
-]{lrr}{}{
+]{lrrr@{/}l}{}{
         \FL
-        Source             & Sentences & Tokens \ML
-        Blogg              &   579 &   9676 \NN
-        Dag og Tid         &  5278 &  88982 \NN
-        Firda              &  3401 &  50579 \NN
-        Klassekampen       &  2215 &  39739 \NN
-        Mål og Meining     &   976 &  25113 \NN
-        Vest-Telemark blad &  2956 &  46990 \ML
-        Total              & 15405 & 263079
+        Source             & Sent. & Tok.   & \multicolumn{2}{c}{Non-proj.} \ML
+        Blogg              &   579 &   9676 &  172&125  \NN
+        Dag og Tid         &  5278 &  88982 & 1305&1063 \NN
+        Firda              &  3401 &  50579 &  628&524  \NN
+        Klassekampen       &  2215 &  39739 &  553&460  \NN
+        Mål og Meining     &   976 &  25113 &  552&371  \NN
+        Vest-Telemark blad &  2956 &  46990 &  674&567  \ML
+        Total              & 15405 & 263079 & 3884&3110
         \LL
     }
 
@@ -156,16 +160,62 @@ labore gentrify salvia pour-over jean shorts Echo Park PBR.
 \subsection{Annotators and annotation work flow}
 \subsection{Preprocessing}
 \subsection{Syntactic preprocessing (Arne)}
+\ctable[botcap,
+    caption={Preprocessor accuracies. Unlabeled (UAS) and Labeled (LAS)
+    attachment scores, and label accuracies (Labels).},
+    label=tbl:parsers,
+    notespar,
+]{lr@{.}lr@{.}lr@{.}l}{Table too wide. Maybe abbreviate citation to something
+like ``S and Ø (2012)''?}{
+        \FL
+Parser & \multicolumn{2}{c}{UAS} & \multicolumn{2}{c}{LAS} & \multicolumn{2}{c}{Labels} \ML
+CG (BM) & 79&39\% & 72&45\% & 82&10\% \NN
+CG (NN) & 80&16\% & 74&76\% & 84&84\% \NN
+\citeA{Skj:Ovr12} (BM) & 87&54\% & 84&63\% & 89&63\%
+        \LL
+    }
+
 \subsection{Inter-annotator agreement (Arne)}
 
 \section{Dependency parsing (Arne \& Lilja)}
-Wes Anderson elit butcher disrupt lomo, selvage mlkshk pickled whatever seitan
-nisi squid sriracha. Eiusmod vero Austin, incididunt pour-over Odd Future
-squid hashtag. Sint twee gastropub, qui velit direct trade lo-fi cornhole
-beard wayfarers commodo put a bird on it gluten-free veniam. Umami paleo
-kitsch quis, qui semiotics ea vero. Irony lo-fi cliche sunt. Mustache before
-they sold out cliche, polaroid Blue Bottle voluptate aliquip swag hashtag
-irony adipisicing. 8-bit ennui eu, +1 actually lo-fi aute adipisicing esse.
+An important aspect of treebank annotation relates to its \emph{parsability},
+i.e. the quality of syntactic parsers that can be acquired based on
+the treebank data.  In order to investigate the parser quality we can
+expect from NDT, we have evaluated three state-of-the-art dependency
+parsers on the material: Maltparser \shortcite{Niv:Hal:Nil:06},
+MST-parser \shortcite{McD:Per:Rib:Haj:05} and the parser of
+\citeA{Boh:Niv:12}.  
+
+For these experiments, both portions of the treebank (Bokm{\aa}l and
+Nynorsk) were split into 80-10-10 train, development and test sets.
+Standard evaluation metrics in dependency parsing are unlabeled and
+labeled attachment scores (UAS, LAS; implemented by the CoNLL
+\textsf{eval.pl} scorer).  These measure the proportion of tokens
+which are correctly attached to their head token and, for LAS,
+furthermore have been assigned the correct dependency label.
+
+%121 words
+
+
+\begin{table}
+\centering
+\begin{tabular}{lll|ll}
+\hline
+& \multicolumn{2}{c}{Bokm{\aa}l} & \multicolumn{2}{c}{Nynorsk}\\
+ & UAS & LAS  & UAS & LAS \\\hline
+Malt default & 88.27 & 85.03 & 87.54 & 83.82\\
+Malt optimized & 92.19 & 89.82 & 91.57 & 88.98\\\hline
+\end{tabular}
+\caption{Dependency parsing results for NDT}
+  \label{tb:parsing}
+\end{table}
+
+Table \ref{tb:parsing} presents the dependency parsing results
+obtained for NDT.  For Maltparser, we trained two versions of the
+parser: one version with default settings and one optimized version,
+where the parser settings was optimized using the MaltOptimizer
+software \shortcite{Bal:Niv:12}.
+
 
 %\newpage
 %\onecolumn
