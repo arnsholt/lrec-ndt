@@ -194,6 +194,11 @@ Until recently, there were no available tools for dependency parsing of Norwegia
 % 197 words
 
 \subsection{Syntactic preprocessing (Arne)}
+As is standard practice when annotating syntactic corpora, the texts to be
+annotated are automatically PoS tagged and syntactically parsed before being
+annotated, an approach which has been shown to be both faster and yielding
+higher quality annotation \cite{Mar:San:Mar:93,For:Sag:10,Skjaerholt:13}.
+
 \ctable[botcap,
     caption={Preprocessor accuracies. Unlabeled (UAS) and Labeled (LAS)
     attachment scores, and label accuracies (Labels).},
@@ -205,9 +210,17 @@ like ``S and Ø (2012)''?}{
 Parser & \multicolumn{2}{c}{UAS} & \multicolumn{2}{c}{LAS} & \multicolumn{2}{c}{Labels} \ML
 CG (BM) & 79&39\% & 72&45\% & 82&10\% \NN
 CG (NN) & 80&16\% & 74&76\% & 84&84\% \NN
-\citeA{Skj:Ovr12} (BM) & 87&54\% & 84&63\% & 89&63\%
+\citeA{Skj:Ovr:12} (BM) & 87&54\% & 84&63\% & 89&63\%
         \LL
     }
+
+% Need to set a standard evaluation corpus to properly compare the different
+% preprocessors. Which has to be different from the training material of *all*
+% the MaltParsers (most important in that respect is the most recent one from
+% PE.
+%
+% Given this, it might make sense to merge or at least connect this part to
+% the section of dependency parsing.
 
 \subsection{Inter-annotator agreement (Arne)}\label{sc:inter-a}
 
