@@ -121,22 +121,19 @@ Clausal complements to verbs such as \emph{tro}, 'believe', occur both with the 
 \section{Texts (Kristin \& Per Erik)}
 NDT currently consist of 282 000 tokens of Norwegian Bokmål and 263 000 tokens of Norwegian Nynorsk, but these numbers will grow somewhat until the end of the project period in January 2014. Comparable treebanks such as the Prague Dependency Treebank and the TIGER treebank, contain to a large extent newspaper text (\cite{Boh:Haj:Hla:2003}, \cite{Bra:2004}). Other treebanks, however, also contain texts from other sources, such as factual prose, fiction and text in a more colloquial style style, e.g. Penn Treebank and Talbanken (\cite{Mar:San:Mar:09}, \cite{Niv:Nil:Hal:2006}). Since newspaper text is frequently used for various NLT tasks and also easily available, we chose to use mostly newspaper text, but added small amounts of text from government reports and parliament transcripts and more colloquial texts from blogs. In the final version of NDT, it will be possible to extract specific genres of text.
 
-\begin{table}[!h]
-  \centering
-  \begin{tabular}{|l|l|}
-    \hline
-    Newspaper text & 84\% \\
-    \hline
-   Government reports & 6\% \\
-    \hline
-   Parliament transcripts & 4\% \\
-    \hline
-   Blogs & 6\% \\
-    \hline
-  \end{tabular}
-  \caption{Distribution of texts in the treebanks}
-  \label{tb:distribution}
-\end{table}
+\ctable[botcap,
+    caption={Distribution of texts in the treebanks},
+    label=tb:distribution,
+    mincapwidth=\columnwidth
+]{lr@{\%}}{}{
+        \FL
+        Source & \multicolumn{1}{c}{Fraction} \ML
+Newspaper text & 84 \NN
+Government reports & 6 \NN
+Parliament transcripts & 4 \NN
+Blogs & 6
+        \LL
+    }
 
 
 
@@ -244,18 +241,17 @@ furthermore have been assigned the correct dependency label.
 %121 words
 
 
-\begin{table}
-\centering
-\begin{tabular}{lll|ll}
-\hline
-& \multicolumn{2}{c}{Bokm{\aa}l} & \multicolumn{2}{c}{Nynorsk}\\
- & UAS & LAS  & UAS & LAS \\\hline
-Malt default & 88.27 & 85.03 & 87.54 & 83.82\\
-Malt optimized & 92.19 & 89.82 & 91.57 & 88.98\\\hline
-\end{tabular}
-\caption{Dependency parsing results for NDT}
-  \label{tb:parsing}
-\end{table}
+\ctable[botcap,
+    caption={Dependency parsing results for NDT},
+    label=tb:parsing
+]{lll@{\hspace{2em}}ll}{}{
+        \FL
+    & \multicolumn{2}{c@{\hspace{2em}}}{Bokm{\aa}l} & \multicolumn{2}{c}{Nynorsk} \NN
+    & UAS & LAS  & UAS & LAS \ML
+Malt default & 88.27 & 85.03 & 87.54 & 83.82 \NN
+Malt optimized & 92.19 & 89.82 & 91.57 & 88.98
+        \LL
+    }
 
 Table \ref{tb:parsing} presents the dependency parsing results
 obtained for NDT.  For Maltparser, we trained two versions of the
