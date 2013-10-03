@@ -9,6 +9,8 @@
 
 \bibliographystyle{apacite}
 
+\let\app=\textsc
+
 \title{The Norwegian Dependency Treebank}
 \author{Folk}
 
@@ -121,63 +123,19 @@ Clausal complements to verbs such as \emph{tro}, 'believe', occur both with the 
 \section{Texts (Kristin \& Per Erik)}
 NDT currently consist of 282 000 tokens of Norwegian Bokmål and 263 000 tokens of Norwegian Nynorsk, but these numbers will grow somewhat until the end of the project period in January 2014. Comparable treebanks such as the Prague Dependency Treebank and the TIGER treebank, contain to a large extent newspaper text (\cite{Boh:Haj:Hla:2003}, \cite{Bra:2004}). Other treebanks, however, also contain texts from other sources, such as factual prose, fiction and text in a more colloquial style style, e.g. Penn Treebank and Talbanken (\cite{Mar:San:Mar:09}, \cite{Niv:Nil:Hal:2006}). Since newspaper text is frequently used for various NLT tasks and also easily available, we chose to use mostly newspaper text, but added small amounts of text from government reports and parliament transcripts and more colloquial texts from blogs. In the final version of NDT, it will be possible to extract specific genres of text.
 
-\begin{table}[!h]
-  \centering
-  \begin{tabular}{|l|l|}
-    \hline
-    Newspaper text & 84\% \\
-    \hline
-   Government reports & 6\% \\
-    \hline
-   Parliament transcripts & 4\% \\
-    \hline
-   Blogs & 6\% \\
-    \hline
-  \end{tabular}
-  \caption{Distribution of texts in the treebanks}
-  \label{tb:distribution}
-\end{table}
-
-
-
-
-%\ctable[botcap,
-%    caption={Statistics for texts in the Bokmål section. Number of sentences,
-%    tokens and non-projective edges/sentences.},
-%    label=tbl:stats-bm
-%]{lrrr@{/}l}{}{
-%        \FL
-%        Source          & Sent. & Tok.   & \multicolumn{2}{c}{Non-proj.} \ML
-%        Aftenposten     &  5646 &  92313 & 1497&1212 \NN
-%        Blogg           &   706 &  22330 &  188&146  \NN
-%        Bergens Tidende &  2551 &  38900 &  459&393  \NN
-%        Dagbladet       &  4436 &  60720 &  763&643  \NN
-%        Klassekampen    &   919 &  16486 &  247&194  \NN
-%        NOU             &   477 &   8360 &  116&91   \NN
-%        Sunnmørsposten  &  1201 &  19109 &  288&252  \NN
-%        Storting        &  1280 &  22146 &  432&315  \NN
-%        VG              &   868 &  12821 &  149&128  \ML
-%        Total           & 18084 & 282075 & 4139&3374
-%        \LL
-%    }
-%
-%\ctable[botcap,
-%    caption={Statistics for texts in the Nynorsk section. Number of sentences,
-%    tokens and non-projective edges/sentences.},
-%    label=tbl:stats-nn
-%]{lrrr@{/}l}{}{
-%        \FL
-%        Source             & Sent. & Tok.   & \multicolumn{2}{c}{Non-proj.} \ML
-%        Blogg              &   579 &   9676 &  172&125  \NN
-%        Dag og Tid         &  5278 &  88982 & 1305&1063 \NN
-%        Firda              &  3401 &  50579 &  628&524  \NN
-%        Klassekampen       &  2215 &  39739 &  553&460  \NN
-%        Mål og Meining     &   976 &  25113 &  552&371  \NN
-%        Vest-Telemark blad &  2956 &  46990 &  674&567  \ML
-%        Total              & 15405 & 263079 & 3884&3110
-%        \LL
-%    }
-
+\ctable[botcap,
+    caption={Distribution of texts in the treebanks},
+    label=tb:distribution,
+    mincapwidth=\columnwidth
+]{lr@{\%}}{}{
+        \FL
+        Source & \multicolumn{1}{c}{Fraction} \ML
+Newspaper text & 84 \NN
+Government reports & 6 \NN
+Parliament transcripts & 4 \NN
+Blogs & 6
+        \LL
+    }
 
 % 138 words 
 
@@ -185,15 +143,35 @@ NDT currently consist of 282 000 tokens of Norwegian Bokmål and 263 000 tokens 
 \subsection{Annotators (Kristin \& Per Erik)}
 All texts in the treebank have been manually annotated by trained linguists. A few of the texts have been syntactically annotated by two annotators, to ensure consistency (cf. \ref{sc:inter-a}). In order to speed up the annotation process, we chose to preprocess the texts using tools already available at the University of Oslo. This will be described in more detail below.
 
-\subsection{Preprocessing and work flow (Kristin \& Per Erik)}
-All texts are first tokenized and morphologically tagged using OBT. The tagging is subsequently checked and corrected by an annotator, using a web tool custom made for this task by André Lynum \cite{Lyn:13}. 
-%Vi hopper over tokeniseringsproblematikken inntil videre, for at ikke artikkelen skal bli for lang
-Until recently, there were no available tools for dependency parsing of Norwegian. We therefore used the syntactic module of OBT, a Constraint Grammar based tagger which does not generate hierarchical structure. On top of that, we built a small rule-based dependency module in the CG-3 framework (<ref Bick>). This syntactic preprocessing was later replaced by a statistical parser trained on early versions of NDT, as explained below. The preprocessed text is imported into the annotation tool TrEd, developed for Prague Dependency Treebank, which in the end is used for the manual syntactic annotation \cite{Paj:Ste:08}.  
+\subsection{Preprocessing and work flow}
+As is standard practice when annotating syntactic corpora, the texts to be
+annotated are automatically PoS tagged and syntactically parsed before being
+annotated, an approach which has been shown to be both faster and yielding
+higher quality annotation \cite{Mar:San:Mar:93,For:Sag:10,Skjaerholt:13}.
+After tokenization, the texts to be annotated are first tagged using OBT, and
+a HMM-based overlay \cite{Joh:Hag:No:Lyn:2011} is used to disambiguate any
+tokens with more than one tag remaining. The morphological annotation is then
+checked and corrected by an annotator using a web interface made for this
+particular task \cite{Lyn:13}. The corrected morphological annotations are
+then preprocessed by a dependency parser and imported into \app{TrEd}, the
+annotation tool developed for the Prague Dependency Treebank, which is used to
+correct the result of the syntactic preprocessing and create the final
+treebank.
 
+Since there were no publicly available dependency corpora at the start of this
+project, training a data-driven dependency parser such as MaltParser was
+impossible. Therefore, the initial syntactic preprocessor was created using
+the syntactic module of OBT, which while it does not create a hierarchical
+structure, does provide some information about heads. On top of this we built
+a small set of rules in the CG-3 framework (<ref Bick>) to build proper
+syntactic structures. This preprocessor was evaluated to get about 80\% of
+heads correct and both head and label correct in 72--74\% of cases, as shown
+in Table \ref{tbl:parsers}.
+
+% TODO: The later syntactic preprocessors
 
 % 197 words
 
-\subsection{Syntactic preprocessing (Arne)}
 \ctable[botcap,
     caption={Preprocessor accuracies. Unlabeled (UAS) and Labeled (LAS)
     attachment scores, and label accuracies (Labels).},
@@ -205,9 +183,17 @@ like ``S and Ø (2012)''?}{
 Parser & \multicolumn{2}{c}{UAS} & \multicolumn{2}{c}{LAS} & \multicolumn{2}{c}{Labels} \ML
 CG (BM) & 79&39\% & 72&45\% & 82&10\% \NN
 CG (NN) & 80&16\% & 74&76\% & 84&84\% \NN
-\citeA{Skj:Ovr12} (BM) & 87&54\% & 84&63\% & 89&63\%
+S\&Ø (BM) & 87&54\% & 84&63\% & 89&63\%
         \LL
     }
+
+% Need to set a standard evaluation corpus to properly compare the different
+% preprocessors. Which has to be different from the training material of *all*
+% the MaltParsers (most important in that respect is the most recent one from
+% PE.
+%
+% Given this, it might make sense to merge or at least connect this part to
+% the section of dependency parsing.
 
 \subsection{Inter-annotator agreement (Arne)}\label{sc:inter-a}
 
@@ -231,18 +217,17 @@ furthermore have been assigned the correct dependency label.
 %121 words
 
 
-\begin{table}
-\centering
-\begin{tabular}{lll|ll}
-\hline
-& \multicolumn{2}{c}{Bokm{\aa}l} & \multicolumn{2}{c}{Nynorsk}\\
- & UAS & LAS  & UAS & LAS \\\hline
-Malt default & 88.27 & 85.03 & 87.54 & 83.82\\
-Malt optimized & 92.19 & 89.82 & 91.57 & 88.98\\\hline
-\end{tabular}
-\caption{Dependency parsing results for NDT}
-  \label{tb:parsing}
-\end{table}
+\ctable[botcap,
+    caption={Dependency parsing results for NDT},
+    label=tb:parsing
+]{lll@{\hspace{2em}}ll}{}{
+        \FL
+    & \multicolumn{2}{c@{\hspace{2em}}}{Bokm{\aa}l} & \multicolumn{2}{c}{Nynorsk} \NN
+    & UAS & LAS  & UAS & LAS \ML
+Malt default & 88.27 & 85.03 & 87.54 & 83.82 \NN
+Malt optimized & 92.19 & 89.82 & 91.57 & 88.98
+        \LL
+    }
 
 Table \ref{tb:parsing} presents the dependency parsing results
 obtained for NDT.  For Maltparser, we trained two versions of the
@@ -250,9 +235,6 @@ parser: one version with default settings and one optimized version,
 where the parser settings was optimized using the MaltOptimizer
 software \shortcite{Bal:Niv:12}.
 
-
-%\newpage
-%\onecolumn
 \clearpage
 \bibliography{ndt}
 
