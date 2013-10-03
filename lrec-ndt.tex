@@ -9,6 +9,8 @@
 
 \bibliographystyle{apacite}
 
+\let\app=\textsc
+
 \title{The Norwegian Dependency Treebank}
 \author{Folk}
 
@@ -182,19 +184,34 @@ Blogs & 6
 \subsection{Annotators (Kristin \& Per Erik)}
 All texts in the treebank have been manually annotated by trained linguists. A few of the texts have been syntactically annotated by two annotators, to ensure consistency (cf. \ref{sc:inter-a}). In order to speed up the annotation process, we chose to preprocess the texts using tools already available at the University of Oslo. This will be described in more detail below.
 
-\subsection{Preprocessing and work flow (Kristin \& Per Erik)}
-All texts are first tokenized and morphologically tagged using OBT. The tagging is subsequently checked and corrected by an annotator, using a web tool custom made for this task by André Lynum \cite{Lyn:13}. 
-%Vi hopper over tokeniseringsproblematikken inntil videre, for at ikke artikkelen skal bli for lang
-Until recently, there were no available tools for dependency parsing of Norwegian. We therefore used the syntactic module of OBT, a Constraint Grammar based tagger which does not generate hierarchical structure. On top of that, we built a small rule-based dependency module in the CG-3 framework (<ref Bick>). This syntactic preprocessing was later replaced by a statistical parser trained on early versions of NDT, as explained below. The preprocessed text is imported into the annotation tool TrEd, developed for Prague Dependency Treebank, which in the end is used for the manual syntactic annotation \cite{Paj:Ste:08}.  
-
-
-% 197 words
-
-\subsection{Syntactic preprocessing (Arne)}
+\subsection{Preprocessing and work flow}
 As is standard practice when annotating syntactic corpora, the texts to be
 annotated are automatically PoS tagged and syntactically parsed before being
 annotated, an approach which has been shown to be both faster and yielding
 higher quality annotation \cite{Mar:San:Mar:93,For:Sag:10,Skjaerholt:13}.
+After tokenization, the texts to be annotated are first tagged using OBT, and
+a HMM-based overlay \cite{Joh:Hag:No:Lyn:2011} is used to disambiguate any
+tokens with more than one tag remaining. The morphological annotation is then
+checked and corrected by an annotator using a web interface made for this
+particular task \cite{Lyn:13}. The corrected morphological annotations are
+then preprocessed by a dependency parser and imported into \app{TrEd}, the
+annotation tool developed for the Prague Dependency Treebank, which is used to
+correct the result of the syntactic preprocessing and create the final
+treebank.
+
+Since there were no publicly available dependency corpora at the start of this
+project, training a data-driven dependency parser such as MaltParser was
+impossible. Therefore, the initial syntactic preprocessor was created using
+the syntactic module of OBT, which while it does not create a hierarchical
+structure, does provide some information about heads. On top of this we built
+a small set of rules in the CG-3 framework (<ref Bick>) to build proper
+syntactic structures. This preprocessor was evaluated to get about 80\% of
+heads correct and both head and label correct in 72--74\% of cases, as shown
+in Table \ref{tbl:parsers}.
+
+% TODO: The later syntactic preprocessors
+
+% 197 words
 
 \ctable[botcap,
     caption={Preprocessor accuracies. Unlabeled (UAS) and Labeled (LAS)
@@ -207,7 +224,7 @@ like ``S and Ø (2012)''?}{
 Parser & \multicolumn{2}{c}{UAS} & \multicolumn{2}{c}{LAS} & \multicolumn{2}{c}{Labels} \ML
 CG (BM) & 79&39\% & 72&45\% & 82&10\% \NN
 CG (NN) & 80&16\% & 74&76\% & 84&84\% \NN
-\citeA{Skj:Ovr:12} (BM) & 87&54\% & 84&63\% & 89&63\%
+S\&Ø (BM) & 87&54\% & 84&63\% & 89&63\%
         \LL
     }
 
