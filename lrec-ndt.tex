@@ -59,7 +59,7 @@ for data-driven dependency parsing of Norwegian.
 \section{Annotation principles}
 
 %NDT is released in the CoNLL format, a tab-separated table consisting of the following 10 fields: token index, word form, lemma, coarse-grained part-of-speech (POS), fine-grained POS, morphological features, index of head, dependency relation and two fields which are left blank in NDT \cite{Niv:Hal:Kub:07}. 
-The texts in NDT are lemmatized, morphologically tagged and annotated with dependency relations and head-dependent graphs. The lemmatization and morphological tagging follow quite closely the Oslo-Bergen Tagger (OBT), but a few adaptions have been made, notably for spelling variants which do not comply for the official norm for Bokmål and Nynorsk (cf. \cite{Joh:Hag:No:Lyn:2011}, \cite{Sol:2013}).
+The texts in NDT are lemmatized, morphologically tagged and annotated with dependency relations and head-dependent graphs. The lemmatization and morphological tagging follow quite closely the Oslo-Bergen Tagger (OBT), but a few adaptions have been made, notably for spelling variants which do not comply for the official norm for Bokmål and Nynorsk \cite<cf.>{Joh:Hag:No:Lyn:2011,Sol:2013}.
 
 
 Independent syntactic annotation guidelines have been developed for NDT \cite{Kin:Sol:Eri:2013}. When developing the annotation guidelines, four fundamental principles had to be taken into consideration: 1. The annotation had to be as linguistically adequate as possible.
@@ -131,7 +131,7 @@ In NDT, sentences such as (\ref{ex:medat}) and (\ref{ex:utenat}) are analyzed si
 % 885 words
 
 \section{Texts}
-NDT currently consist of 282 000 tokens of Norwegian Bokmål and 263 000 tokens of Norwegian Nynorsk, but these numbers will grow somewhat until the end of the project period in January 2014. Comparable treebanks such as the Prague Dependency Treebank and the TIGER treebank, contain to a large extent newspaper text (\cite{Boh:Haj:Hla:2003}, \cite{Bra:2004}). Other treebanks, however, also contain texts from other sources, such as factual prose, fiction and text in a more colloquial style style, e.g. Penn Treebank and Talbanken (\cite{Mar:San:Mar:09}, \cite{Niv:Nil:Hal:2006}). Since newspaper text is frequently used for various NLT tasks and also easily available, we chose to use mostly newspaper text, but added small amounts of text from government reports and parliament transcripts and more colloquial texts from blogs. In the final version of NDT, it will be possible to extract specific genres of text.
+NDT currently consist of 282 000 tokens of Norwegian Bokmål and 263 000 tokens of Norwegian Nynorsk, but these numbers will grow somewhat until the end of the project period in January 2014. Comparable treebanks such as the Prague Dependency Treebank and the TIGER treebank, contain to a large extent newspaper text \cite{Boh:Haj:Hla:2003,Bra:2004}. Other treebanks, however, also contain texts from other sources, such as factual prose, fiction and text in a more colloquial style style, e.g. Penn Treebank and Talbanken \cite{Mar:San:Mar:93,Niv:Nil:Hal:2006}. Since newspaper text is frequently used for various NLT tasks and also easily available, we chose to use mostly newspaper text, but added small amounts of text from government reports and parliament transcripts and more colloquial texts from blogs. In the final version of NDT, it will be possible to extract specific genres of text.
 
 \ctable[botcap,
     caption={Distribution of texts in the treebanks},
