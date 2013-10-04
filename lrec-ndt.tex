@@ -178,9 +178,18 @@ syntactic structures. This preprocessor was evaluated to get about 80\% of
 heads correct and both head and label correct in 72--74\% of cases, as shown
 in Table \ref{tbl:parsers}.
 
-% TODO: The later syntactic preprocessors
-
-% 197 words
+The first statistical parser trained on the corpus we are aware of is that of
+\citeA{Skj:Ovr:12}, which was later used in the inter-annotator agreement
+experiments of \citeA{Skjaerholt:13}. This parser was reported to reach a
+labelled accuracy of 84\% and an unlabelled accuracy of 87\%, using the
+liblinear learner and the nivreeager algorithm. Based on this, an improved
+parser was trained using the non-projective Covington algorithm. This final
+parser obtains an unlabelled accuracy of nearly 90\% and labelled accuracy of
+87\%. Note that these results aren't entirely comparable as they are evaluated
+on different corpora, but given the important differences in performance, the
+improved parsers are clearly better. In particular, the difference between the
+CG parser and that of \citeA{Skj:Ovr:12} resulted in significant increases in
+annotator productivity \cite{Skjaerholt:13}.
 
 \ctable[botcap,
     caption={Preprocessor accuracies. Unlabeled (UAS) and Labeled (LAS)
@@ -188,12 +197,14 @@ in Table \ref{tbl:parsers}.
     label=tbl:parsers,
     mincapwidth=\columnwidth,
     notespar,
-]{lr@{.}lr@{.}lr@{.}l}{}{
+]{l@{~(}c@{)\hspace{1em}}r@{.}lr@{.}lr@{.}l}{}{
         \FL
-Parser & \multicolumn{2}{c}{UAS} & \multicolumn{2}{c}{LAS} & \multicolumn{2}{c}{Labels} \ML
-CG (BM) & 79&39\% & 72&45\% & 82&10\% \NN
-CG (NN) & 80&16\% & 74&76\% & 84&84\% \NN
-S\&Ø (BM) & 87&54\% & 84&63\% & 89&63\%
+\multicolumn{2}{c}{Parser} & \multicolumn{2}{c@{\hspace{1em}}}{UAS} & \multicolumn{2}{c@{\hspace{1em}}}{LAS} & \multicolumn{2}{c@{\hspace{0.5em}}}{Labels} \ML
+CG & BM            & 79&39\% & 72&45\% & 82&10\% \NN
+CG & NN            & 80&16\% & 74&76\% & 84&84\% \NN
+S \& Ø (2012) & BM & 87&54\% & 84&63\% & 89&63\% \NN
+Final & BM         & 89&89\% & 87&57\% & 91&70\% \NN
+Final & NN         & 89&66\% & 87&50\% & 91&76\%
         \LL
     }
 
