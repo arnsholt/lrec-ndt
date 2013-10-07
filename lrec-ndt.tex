@@ -4,12 +4,15 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lrec2006}
+\usepackage{nicefrac}
 \usepackage{apacite}
 \usepackage{covington}
 
 \bibliographystyle{apacite}
 
 \let\app=\textsc
+\let\oldfrac=\frac
+\renewcommand\frac[2]{\mathchoice{\oldfrac{#1}{#2}}{\nicefrac{#1}{#2}}{\nicefrac{#1}{#2}}{\nicefrac{#1}{#2}}}
 
 \title{The Norwegian Dependency Treebank}
 \author{Folk}
@@ -231,14 +234,38 @@ not directly applicable to the task of syntactic annotation.
     caption={Inter-annotator agreement using different preprocessors},
     label=tb:agreement,
     mincapwidth=\columnwidth,
-]{lr@{.}lr@{,}l}{}{
+]{lcr@{.}lr@{.}l}{}{
         \FL
-Preprocessor & \multicolumn{2}{c@{\hspace{1em}}}{UAS} & \multicolumn{2}{c@{\hspace{0.5em}}}{LAS} \ML
-Danish    & 96&3\% & 94&0\% \NN
-Swedish   & 96&1\% & 94&4\% \NN
-Norwegian & 96&8\% & 95&3\%
+\multicolumn{2}{c}{Preprocessor ($\frac{\mathrm{UAS}}{\mathrm{LAS}}$)} & \multicolumn{2}{c@{\hspace{1em}}}{UAS} & \multicolumn{2}{c@{\hspace{0.5em}}}{LAS} \ML
+Danish    & ($\frac{72.5\%}{39.2\%}$) & 96&3\% & 94&0\% \NN
+Swedish   & ($\frac{79.1\%}{68.7\%}$) & 96&1\% & 94&4\% \NN
+Norwegian & ($\frac{87.5\%}{84.6\%}$) & 96&8\% & 95&3\%
         \LL
     }
+
+Table \ref{tb:agreement} shows the labelled and unlabelled attachments for
+three different preprocessors, all three taken from those trained by
+\citeA{Skj:Ovr:12}. The first two preprocessors, labelled Danish and Swedish
+use cross-lingual parsers adapdted from the Danish Dependency Treebank
+\cite{Kromann:03} and Talbanken05 \cite{Niv:Nil:Hal:2006}, respectively. To
+create these parsers, the PoS and dependency relation tagsets of the source
+treebanks were mapped into the corresponding tagsets used by the NDT and
+differing opinions on head selection were accounted for by transforming the
+relevant constructions in the sources into the representations licensed by the
+NDT guidelines. The Danish parser is delexicalised (that is, the Danish
+word-forms have been removed from the training corpus) while the Swedish
+parser was trained on a lexicalised corpus (no spelling normalisation was
+performed).
+
+As is clear from the data in the table, inter-annotator agreement is uniformly
+high, regardless of the quality of the parser used for preprocessing.
+Agreement on heads as measured by unlabelled attachment does not appear to
+change appreciably as a function of preprocessor performance, but labelled
+attachment does increase somewhat, from 94.0\% using the Danish parser to
+95.3\% with the Norwegian parser. These results are comparable to those
+reported for the German NEGRA \cite<92.4\% labelled $F_1$,>{Brants:00} and
+TIGER \cite<93.9\% labelled $F_1$,>{Bra:Han:02} treebanks and the Spanish
+Cat3LB treebank \cite<86.9\% labelled bracket precision,>{Civit:ea:03}.
 
 \section{Dependency parsing}
 An important aspect of treebank annotation relates to its \emph{parsability},
