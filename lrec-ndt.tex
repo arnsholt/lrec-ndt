@@ -216,7 +216,29 @@ Final & NN         & 89&66\% & 87&50\% & 91&76\%
 % Given this, it might make sense to merge or at least connect this part to
 % the section of dependency parsing.
 
-\subsection{Inter-annotator agreement}\label{sc:inter-a}
+\subsection{Inter-annotator agreement}
+\label{sc:inter-a}
+To validate the consistency of the annotations produced by the different
+annotators, a set of experiments quantifying inter-annotator agreement were
+performed \cite{Skjaerholt:13}. As is common practice in the field of
+syntactic annotation \cite{Civit:ea:03,Brants:00,Bra:Han:02,Hajic:04}, the
+simple agreement measures labelled and unlabelled attachment accuracy were
+used. The reason for using an uncorrected measure rather than a
+chance-corrected measure such as $\kappa$ or $\pi$ is that these measures are
+not directly applicable to the task of syntactic annotation.
+
+\ctable[botcap,
+    caption={Inter-annotator agreement using different preprocessors},
+    label=tb:agreement,
+    mincapwidth=\columnwidth,
+]{lr@{.}lr@{,}l}{}{
+        \FL
+Preprocessor & \multicolumn{2}{c@{\hspace{1em}}}{UAS} & \multicolumn{2}{c@{\hspace{0.5em}}}{LAS} \ML
+Danish    & 96&3\% & 94&0\% \NN
+Swedish   & 96&1\% & 94&4\% \NN
+Norwegian & 96&8\% & 95&3\%
+        \LL
+    }
 
 \section{Dependency parsing}
 An important aspect of treebank annotation relates to its \emph{parsability},
