@@ -268,6 +268,7 @@ TIGER \cite<93.9\% labelled $F_1$,>{Bra:Han:02} treebanks and the Spanish
 Cat3LB treebank \cite<86.9\% labelled bracket precision,>{Civit:ea:03}.
 
 \section{Dependency parsing}
+%TO-DO: note that final version of the paper will contain results from the final version of the treebank
 An important aspect of treebank annotation relates to its \emph{parsability},
 i.e. the quality of syntactic parsers that can be acquired based on
 the treebank data.  In order to investigate the parser quality we can
@@ -295,7 +296,8 @@ furthermore have been assigned the correct dependency label.
     & \multicolumn{2}{c@{\hspace{2em}}}{Bokm{\aa}l} & \multicolumn{2}{c}{Nynorsk} \NN
     & UAS & LAS  & UAS & LAS \ML
 Malt default & 88.27 & 85.03 & 87.54 & 83.82 \NN
-Malt optimized & 92.19 & 89.82 & 91.57 & 88.98
+Malt optimized & 92.19 & 89.82 & 91.57 & 88.98 \NN
+MST  & 91.69 & 88.26 & 91.54 & 87.80 
         \LL
     }
 
@@ -303,7 +305,7 @@ Table \ref{tb:parsing} presents the dependency parsing results
 obtained for NDT.  For Maltparser, we trained two versions of the
 parser: one version with default settings and one optimized version,
 where the parser settings was optimized using the MaltOptimizer
-software \shortcite{Bal:Niv:12}.
+software \shortcite{Bal:Niv:12}. 
 
 \clearpage
 \bibliography{ndt}
