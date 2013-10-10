@@ -275,7 +275,17 @@ the treebank data.  In order to investigate the parser quality we can
 expect from NDT, we have evaluated three state-of-the-art dependency
 parsers on the material: Maltparser \shortcite{Niv:Hal:Nil:06},
 MST-parser \shortcite{McD:Per:Rib:Haj:05} and the parser of
-\citeA{Boh:Niv:12}.  
+\citeA{Boh:Niv:12}. These implement different parsing strategies: Maltparser is a transition-based parser with local learning and greedy search, MST is a graph-based dependency parser implementing global, near-exhaustive search and the \citeA{Boh:Niv:12} parser is a transition-based dependency parser with joint tagger that
+implements global learning and a beam search for non-projective labeled
+dependency parsing. 
+This latter parser has recently outperformed pipeline systems (such as the
+Malt and MST parsers) both in terms of tagging and parsing accuracy for
+typologically diverse languages such as Chinese, English, and German. 
+For Maltparser, we trained two versions of the
+parser: one version with default settings and one optimized version,
+where the parser settings was optimized using the MaltOptimizer
+software \shortcite{Bal:Niv:12}. Both the MST and \citeA{Boh:Niv:12}
+parsers were trained using default settings.
 
 For these experiments, both portions of the treebank (Bokm{\aa}l and
 Nynorsk) were split into 80-10-10 train, development and test sets.
@@ -285,6 +295,7 @@ labeled attachment scores (UAS, LAS; implemented by the CoNLL
 which are correctly attached to their head token and, for LAS,
 furthermore have been assigned the correct dependency label.
 
+
 %121 words
 
 
@@ -293,19 +304,20 @@ furthermore have been assigned the correct dependency label.
     label=tb:parsing
 ]{lll@{\hspace{2em}}ll}{}{
         \FL
-    & \multicolumn{2}{c@{\hspace{2em}}}{Bokm{\aa}l} & \multicolumn{2}{c}{Nynorsk} \NN
+    & \multicolumn{2}{c@{\hspace{2em}}}{Bokm{\aa}l (BM)} & \multicolumn{2}{c}{Nynorsk (NN)} \NN
     & UAS & LAS  & UAS & LAS \ML
 Malt default & 88.27 & 85.03 & 87.54 & 83.82 \NN
 Malt optimized & 92.19 & 89.82 & 91.57 & 88.98 \NN
-MST  & 91.69 & 88.26 & 91.54 & 87.80 
+MST  & 91.69 & 88.26 & 91.54 & 87.80 \NN
+Bohnet\&Nivre & 92.94 & 90.56 & 92.78 & 90.18 
         \LL
     }
 
 Table \ref{tb:parsing} presents the dependency parsing results
-obtained for NDT.  For Maltparser, we trained two versions of the
-parser: one version with default settings and one optimized version,
-where the parser settings was optimized using the MaltOptimizer
-software \shortcite{Bal:Niv:12}. 
+obtained for NDT. We find that the \citeA{Boh:Niv:12} parser
+outperforms the other parsers and obtains labeled accuracy scores of
+90.6 and 90.2 for the BM and NN treebanks, respectively.
+The optimized Maltparser model performs onlys slightly lower, at 89.8 and 89.0. 
 
 \clearpage
 \bibliography{ndt}
