@@ -168,7 +168,7 @@ a HMM-based overlay \cite{Joh:Hag:No:Lyn:2011} is used to disambiguate any
 tokens with more than one tag remaining. The morphological annotation is then
 checked and corrected by an annotator using a web interface made for this
 particular task \cite{Lyn:13}. The corrected morphological annotations are
-then preprocessed by a crude dependency parser and imported into \app{TrEd}, the
+then preprocessed by a dependency parser and imported into \app{TrEd}, the
 annotation tool developed for the Prague Dependency Treebank, which is used to
 correct the output of the syntactic preprocessing and create the final
 treebank.
@@ -180,21 +180,19 @@ the syntactic module of OBT, which while it does not create a hierarchical
 structure, does provide some information about heads. On top of this we built
 a small set of rules in the CG-3 framework (<ref Bick>) to build proper
 syntactic structures. This preprocessor was evaluated to get about 80\% of
-heads correct and both head and label correct in 72--74\% of cases, as shown
-in Table \ref{tbl:parsers}.
+heads correct (unlabelled attachment) and both head and label (labelled
+attachment) correct in 72--74\% of cases, as shown in Table \ref{tbl:parsers}.
 
-The first statistical parser trained on the corpus we are aware of is that of
+The first statistical parser trained on the corpus is that of
 \citeA{Skj:Ovr:12}, which was later used in inter-annotator agreement
-experiments of \citeA{Skjaerholt:13}. This parser was reported to reach a
-labelled accuracy of 84\% and an unlabelled accuracy of 87\%, using the
-liblinear learner and the nivreeager algorithm. Based on this, an improved
-parser was trained using the non-projective Covington algorithm. This final
-parser obtains an unlabelled accuracy of nearly 90\% and labelled accuracy of
-87\%. Note that these results are not entirely comparable as they are evaluated
-on different corpora, but given the important differences in performance, the
-improved parsers are clearly better. In particular, the difference between the
-CG parser and that of \citeA{Skj:Ovr:12} resulted in significant increases in
-annotator productivity \cite{Skjaerholt:13}.
+experiments of \citeA{Skjaerholt:13}, reported to reach a labelled accuracy of
+84\% and an unlabelled accuracy of 87\%. Based on this, an improved parser was
+trained which obtains an unlabelled accuracy of nearly 90\% and labelled
+accuracy of 87\%. Note that these results are not entirely comparable as they
+are evaluated on different corpora, but given the important differences in
+performance, the improved parsers are clearly better. In particular, the
+difference between the CG parser and that of \citeA{Skj:Ovr:12} resulted in
+significant increases in annotator productivity \cite{Skjaerholt:13}.
 
 \ctable[botcap,
     caption={Preprocessor accuracies. Unlabeled (UAS) and Labeled (LAS)
