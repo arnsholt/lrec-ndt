@@ -179,7 +179,11 @@ Blogs & 6
 
 \section{Annotation process}
 \subsection{Annotators}
-All texts in the treebank have been manually annotated by trained linguists. A few of the texts have been syntactically annotated by two annotators, to ensure consistency (cf. \ref{sc:inter-a}). In order to speed up the annotation process, we chose to preprocess the texts using tools already available at the University of Oslo. This process will be described in more detail below.
+All texts in the treebank have been manually annotated by trained linguists. A
+few of the texts have been syntactically annotated by two annotators, to
+ensure consistency (cf. \ref{sc:inter-a}). In order to speed up the annotation
+process, we chose to preprocess the texts using tools already available at the
+University of Oslo.
 
 \subsection{Preprocessing and work flow}
 As is standard practice when annotating syntactic corpora, the texts to be
@@ -187,7 +191,7 @@ annotated are automatically PoS tagged and syntactically parsed before being
 annotated, an approach which has been shown to be both fast and yielding
 high quality annotation \cite{Mar:San:Mar:93,For:Sag:10,Skjaerholt:13}.
 After tokenization, the texts to be annotated are first tagged using OBT, and
-a HMM-based overlay \cite{Joh:Hag:No:Lyn:2011} is used to disambiguate any
+a HMM-based overlay \cite{Johannessen:etal:12} is used to disambiguate any
 tokens with more than one tag remaining. The morphological annotation is then
 checked and corrected by an annotator using a web interface made for this
 particular task \cite{Lyn:13}. The corrected morphological annotations are
@@ -253,42 +257,16 @@ used. The reason for using an uncorrected measure rather than a
 chance-corrected measure such as $\kappa$ or $\pi$ is that these measures are
 not directly applicable to the task of syntactic annotation.
 
-\ctable[botcap,
-    caption={Inter-annotator agreement using different preprocessors},
-    label=tb:agreement,
-    mincapwidth=\columnwidth,
-]{lcr@{.}lr@{.}l}{}{
-        \FL
-\multicolumn{2}{c}{Preprocessor ($\frac{\mathrm{UAS}}{\mathrm{LAS}}$)} & \multicolumn{2}{c@{\hspace{1em}}}{UAS} & \multicolumn{2}{c@{\hspace{0.5em}}}{LAS} \ML
-Danish    & ($\frac{72.5\%}{39.2\%}$) & 96&3\% & 94&0\% \NN
-Swedish   & ($\frac{79.1\%}{68.7\%}$) & 96&1\% & 94&4\% \NN
-Norwegian & ($\frac{87.5\%}{84.6\%}$) & 96&8\% & 95&3\%
-        \LL
-    }
-
-Table \ref{tb:agreement} shows the labelled and unlabelled attachments for
-three different preprocessors, all three taken from those trained by
-\citeA{Skj:Ovr:12}. The first two preprocessors, labelled Danish and Swedish
-use cross-lingual parsers adapdted from the Danish Dependency Treebank
-\cite{Kromann:03} and Talbanken05 \cite{Niv:Nil:Hal:2006}, respectively. To
-create these parsers, the PoS and dependency relation tagsets of the source
-treebanks were mapped into the corresponding tagsets used by the NDT and
-differing opinions on head selection were accounted for by transforming the
-relevant constructions in the sources into the representations licensed by the
-NDT guidelines. The Danish parser is delexicalised (that is, the Danish
-word-forms have been removed from the training corpus) while the Swedish
-parser was trained on a lexicalised corpus (no spelling normalisation was
-performed).
-
-As is clear from the data in the table, inter-annotator agreement is uniformly
-high, regardless of the quality of the parser used for preprocessing.
-Agreement on heads as measured by unlabelled attachment does not appear to
-change appreciably as a function of preprocessor performance, but labelled
-attachment does increase somewhat, from 94.0\% using the Danish parser to
-95.3\% with the Norwegian parser. These results are comparable to those
-reported for the German NEGRA \cite<92.4\% labelled $F_1$,>{Brants:00} and
-TIGER \cite<93.9\% labelled $F_1$,>{Bra:Han:02} treebanks and the Spanish
-Cat3LB treebank \cite<86.9\% labelled bracket precision,>{Civit:ea:03}.
+\citeA{Skjaerholt:13} measured inter-annotator agreement as measured by
+labelled and unlabelled attachment, using a number of different preprocessors
+from the cross lingual parsers of \citeA{Skj:Ovr:12}. Here, we will
+concentrate on the agreement using the best parser, whose performance is shown
+in Table \ref{tbl:parsers}. Using this parser, agreement was measured to be
+96.8\% unlabelled and 95.3\% labelled accuracy. These results are comparable
+to those reported for the German NEGRA \cite<92.4\% labelled
+$F_1$,>{Brants:00} and TIGER \cite<93.9\% labelled $F_1$,>{Bra:Han:02}
+treebanks and the Spanish Cat3LB treebank \cite<86.9\% labelled bracket
+precision,>{Civit:ea:03}.
 
 \section{Dependency parsing}
 %TO-DO: note that final version of the paper will contain results from the final version of the treebank
