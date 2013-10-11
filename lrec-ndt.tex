@@ -4,18 +4,20 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lrec2006}
-\usepackage{nicefrac}
 \usepackage{apacite}
 \usepackage{covington}
+\usepackage{tikz-qtree}
 
 \bibliographystyle{apacite}
 
 \let\app=\textsc
-\let\oldfrac=\frac
-\renewcommand\frac[2]{\mathchoice{\oldfrac{#1}{#2}}{\nicefrac{#1}{#2}}{\nicefrac{#1}{#2}}{\nicefrac{#1}{#2}}}
+\newcommand\deprel[1]{\\\textsc{#1}}
+
+\tikzset{edge from parent/.style={->,draw,font={\scshape\small}},
+    every tree node/.style={align=center,anchor=north},
+    level distance=10ex}
 
 \title{The Norwegian Dependency Treebank}
-%\author{Folk}
 
 \author{\bf Per Erik Solberg$^{\ast}$, Arne Skj{\ae}rholt$^{\dagger}$, 
         Lilja {\O}vrelid$^{\dagger}$, Kristin Hagen$^{\ddag}$, 
@@ -163,16 +165,34 @@ Table (x) summarizes some choices where dependency treebanks tend to differ.
   \label{tb:choices}
 \end{table}
 
-\begin{figure}[h!]
-  \centering
-    \includegraphics{medat.jpg}
+\begin{figure}
+    \begin{center}
+        %\includegraphics{medat.jpg}
+        \Tree [.tror\deprel{finv}
+                Nå\deprel{adv}
+                [.myndigheter\deprel{subj}
+                    lokale\deprel{atr} ]
+                [.var\deprel{dobj}
+                    at\deprel{sbu}
+                    bortføringen\deprel{subj}
+                    [.planlagt\deprel{infv} nøye\deprel{adv} ] ]
+                {\vphantom{I}.}\deprel{ip} ]
+    \end{center}
     \caption{Analysis of (\ref{ex:medat})}
     \label{figure:medat}
 \end{figure}
 
-\begin{figure}[h!]
-  \centering
-    \includegraphics{utenat.jpg}
+\begin{figure}
+    \begin{center}
+        %\includegraphics{utenat.jpg}
+        \Tree [.tror\deprel{finv}
+                jeg\deprel{subj}
+                ikke\deprel{adv}
+                [.er\deprel{dobj}
+                    det\deprel{subj}
+                    tilfeldig\deprel{spred} ]
+                {.}\deprel{ip} ]
+    \end{center}
     \caption{Analysis of (\ref{ex:utenat})}
     \label{figure:utenat}
 \end{figure}
@@ -186,9 +206,9 @@ The NDT currently consist of 282 000 tokens of Norwegian Bokmål and 263 000 tok
     caption={Distribution of texts in the treebanks},
     label=tb:distribution,
     mincapwidth=\columnwidth
-]{lr@{\%}}{}{
+]{lr@{\%\hspace{0.5em}}}{}{
         \FL
-        Source & \multicolumn{2}{c}{Fraction} \ML
+        Source & \multicolumn{1}{c}{Fraction} \ML
 Newspaper text & 84 \NN
 Government reports & 6 \NN
 Parliament transcripts & 4 \NN
