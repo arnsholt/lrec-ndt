@@ -139,31 +139,25 @@ I believe not it is accidental
 \glt `I don't belive that it is accidental.'
 \glend
 \end{examples}
- 
+
 Clausal complements of verbs such as \emph{tro}, 'believe', occur both with the complementizer \emph{at}, as in (\ref{ex:medat}), and without any complementizer, as in (\ref{ex:utenat}). If the complementizer were the head, the complement clauses in (\ref{ex:medat}) and (\ref{ex:utenat}) would have had different heads, despite their obvious similarities. This, in turn, would make it significantly more difficult to formulate queries in e.g. TreeQuery that would cover both cases.
 %The ability to retrieve constructions through queries has been important in the annotation process, notably in order to find annotation errors, and it will probably also be important to certain users of the treebank.
 In the NDT, sentences such as (\ref{ex:medat}) and (\ref{ex:utenat}) are analyzed similarly: The (finite) verb of the clausal complement serves as head in both cases, and carries the dependency relation DOBJ (direct object), c.f. figure \ref{figure:medat} and \ref{figure:utenat}.
 % Both will therefore be retrieved through a query for finite verbs with the dependency relation DOBJ.
-Table (x) summarizes some choices where dependency treebanks tend to differ.
+Table \ref{tb:choices} summarizes some choices where dependency treebanks tend to differ.
 
-\begin{table}[!h]
-  \centering
-  \begin{tabular}{|l|l|l|}
-    \hline
-    Construction & Head & Dependent \\
-    \hline
-    Transitive preposition & Preposition & Prepositional complement \\
-    \hline
-    Subordinate clauses & Finite verb & Complementizer \\
-    \hline
-    Coordination & First conjunct & Subsequent conjuncts \\
-    \hline
-    Determiner-noun complex & Noun & Determiner \\
-    \hline
-  \end{tabular}
-  \caption{Annotation choices in the NDT}
-  \label{tb:choices}
-\end{table}
+\ctable[botcap,
+    caption={Annotation choices in the NDT},
+    label=tb:choices,
+]{ll}{}{
+        \FL
+\multicolumn{1}{c@{\hspace{1em}}}{Head} & \multicolumn{1}{c@{\hspace{0.5em}}}{Dependent} \ML
+Preposition & Prepositional complement \NN
+Finite verb & Complementizer \NN
+First conjunct & Subsequent conjuncts \NN
+Noun & Determiner
+        \LL
+    }
 
 \begin{figure}
     \begin{center}
