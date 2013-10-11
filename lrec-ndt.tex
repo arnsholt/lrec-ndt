@@ -121,26 +121,47 @@ Annotators frequently meet preposition-noun sequences which are much less straig
 To ensure consistency and a high annotation speed, the annotation guidelines have a number of syntactic tests which the annotators use to distinguish between the construction \cite[54-56]{Kin:Sol:Eri:2013}.
 
 \subsection{Complementizers}
-There is no obvious head-dependent relationship between complementizers and verbs or between functional and lexical heads in general, and there is therefore not a unique answer to how such a relationship should be represented in Dependency Grammar.
+There is no obvious head-dependent relationship between complementizers and verbs or between functional and lexical heads in general, and there is therefore not a unique answer to how such a relationship should be represented in dependency grammar.
 %In the original formulation of Dependency Grammar, no dependency relations were indicated between function words and lexical words. Instead, a different, symmetrical relation was used (cf. \cite[361-410]{Tes:65}). In Dependency Grammar treebanks comparable to the NDT, no relations apart from assymetrical dependency relations are used. Treebanks vary with respect to the annotation of the complementizer-verbs relations and similar relations between functional and lexical heads.
 In the NDT, the verb is the head and the complementizer is a dependent on the verb. This choice is first and foremost motivated by the fourth principle stated above: that it should be easy to make queries for specific constructions. In Norwegian, complementizers are frequently dropped, as the following examples show (from the NDT):
 \begin{examples}
 \item\label{ex:medat}
 \gll Nå tror lokale myndigheter at bortføringen var nøye planlagt.
 now believe local authorities that.comp abduction+the was carefully planned
-\glt 'Local authorities now believe that the abduction was carefully planned.'
+\glt `Local authorities now believe that the abduction was carefully planned.'
 \glend
 
 \item\label{ex:utenat}
 \gll Jeg tror ikke det er tilfeldig.
 I believe not it is accidental
-\glt 'I don't belive that it is accidental.'
+\glt `I don't belive that it is accidental.'
 \glend
 \end{examples}
  
-Clausal complements to verbs such as \emph{tro}, 'believe', occur both with the complementizer \emph{at}, as in (\ref{ex:medat}), and without any complementizer, as in (\ref{ex:utenat}). If the complementizer were the head, the complement clauses in (\ref{ex:medat}) and (\ref{ex:utenat}) would have had different heads, despite their obvious similarities. This, in turn, would make it significantly more difficult to formulate queries in e.g. TreeQuery, that would cover both cases.
+Clausal complements of verbs such as \emph{tro}, 'believe', occur both with the complementizer \emph{at}, as in (\ref{ex:medat}), and without any complementizer, as in (\ref{ex:utenat}). If the complementizer were the head, the complement clauses in (\ref{ex:medat}) and (\ref{ex:utenat}) would have had different heads, despite their obvious similarities. This, in turn, would make it significantly more difficult to formulate queries in e.g. TreeQuery that would cover both cases.
 %The ability to retrieve constructions through queries has been important in the annotation process, notably in order to find annotation errors, and it will probably also be important to certain users of the treebank.
-In the NDT, sentences such as (\ref{ex:medat}) and (\ref{ex:utenat}) are analyzed similarly: The (finite) verb of the clausal complement serves as head in both cases, and carry the dependency relation DOBJ (direct object), c.f. figure \ref{figure:medat} and \ref{figure:utenat}. Both will therefore be retrieved through a query for finite verbs with the dependency relation DOBJ.
+In the NDT, sentences such as (\ref{ex:medat}) and (\ref{ex:utenat}) are analyzed similarly: The (finite) verb of the clausal complement serves as head in both cases, and carry the dependency relation DOBJ (direct object), c.f. figure \ref{figure:medat} and \ref{figure:utenat}.
+% Both will therefore be retrieved through a query for finite verbs with the dependency relation DOBJ.
+Table (x) summarizes some choices where dependency treebanks tend to differ.
+
+\begin{table}[!h]
+  \centering
+  \begin{tabular}{|l|l|l|}
+    \hline
+    Construction & Head & Dependent \\
+    \hline
+    Transitive preposition & Preposition & Prepositional complement \\
+    \hline
+    Subordinate clauses & Finite verb & Complementizer \\
+    \hline
+    Coordination & First conjunct & Subsequent conjuncts \\
+    \hline
+    Determiner-noun complex & Noun & Determiner \\
+    \hline
+  \end{tabular}
+  \caption{Annotation choices in the NDT}
+  \label{tb:choices}
+\end{table}
 
 \begin{figure}[h!]
   \centering
@@ -167,7 +188,7 @@ The NDT currently consist of 282 000 tokens of Norwegian Bokmål and 263 000 tok
     mincapwidth=\columnwidth
 ]{lr@{\%}}{}{
         \FL
-        Source & \multicolumn{1}{c}{Fraction} \ML
+        Source & \multicolumn{2}{c}{Fraction} \ML
 Newspaper text & 84 \NN
 Government reports & 6 \NN
 Parliament transcripts & 4 \NN
