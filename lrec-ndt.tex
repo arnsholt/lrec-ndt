@@ -4,18 +4,20 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lrec2006}
-\usepackage{nicefrac}
 \usepackage{apacite}
 \usepackage{covington}
+\usepackage{tikz-qtree}
 
 \bibliographystyle{apacite}
 
 \let\app=\textsc
-\let\oldfrac=\frac
-\renewcommand\frac[2]{\mathchoice{\oldfrac{#1}{#2}}{\nicefrac{#1}{#2}}{\nicefrac{#1}{#2}}{\nicefrac{#1}{#2}}}
+\newcommand\deprel[1]{\\\textsc{#1}}
+
+\tikzset{edge from parent/.style={->,draw,font={\scshape\small}},
+    every tree node/.style={align=center,anchor=north},
+    level distance=10ex}
 
 \title{The Norwegian Dependency Treebank}
-%\author{Folk}
 
 \author{\bf Per Erik Solberg$^{\ast}$, Arne Skj{\ae}rholt$^{\dagger}$, 
         Lilja {\O}vrelid$^{\dagger}$, Kristin Hagen$^{\ddag}$, 
@@ -97,13 +99,13 @@ In other cases the pursuit of linguistic adequacy has been given priority. The s
 \item\label{ex:intrans}
 \gll Per setter på CD-en.
 Per puts on CD+the
-\glt 'Per puts on the CD.'
+\glt `Per puts on the CD.'
 \glend
 
 \item\label{ex:trans}
 \gll Per sitter på stolen.
 Per sits on chair+the
-\glt 'Per sits on the chair.'
+\glt `Per sits on the chair.'
 \glend
 \end{examples}
 
@@ -119,13 +121,13 @@ In the NDT, the verb is the head and the complementizer is a dependent on the ve
 \item\label{ex:medat}
 \gll Nå tror lokale myndigheter at bortføringen var nøye planlagt.
 now believe local authorities that.comp abduction+the was carefully planned
-\glt 'Local authorities now believe that the abduction was carefully planned.'
+\glt `Local authorities now believe that the abduction was carefully planned.'
 \glend
 
 \item\label{ex:utenat}
 \gll Jeg tror ikke det er tilfeldig.
 I believe not it is accidental
-\glt 'I don't belive that it is accidental.'
+\glt `I don't belive that it is accidental.'
 \glend
 \end{examples}
  
@@ -133,16 +135,34 @@ Clausal complements to verbs such as \emph{tro}, 'believe', occur both with the 
 %The ability to retrieve constructions through queries has been important in the annotation process, notably in order to find annotation errors, and it will probably also be important to certain users of the treebank.
 In the NDT, sentences such as (\ref{ex:medat}) and (\ref{ex:utenat}) are analyzed similarly: The (finite) verb of the clausal complement serves as head in both cases, and carry the dependency relation DOBJ (direct object), c.f. figure \ref{figure:medat} and \ref{figure:utenat}. Both will therefore be retrieved through a query for finite verbs with the dependency relation DOBJ.
 
-\begin{figure}[h!]
-  \centering
-    \includegraphics{medat.jpg}
+\begin{figure}
+    \begin{center}
+        %\includegraphics{medat.jpg}
+        \Tree [.tror\deprel{finv}
+                Nå\deprel{adv}
+                [.myndigheter\deprel{subj}
+                    lokale\deprel{atr} ]
+                [.var\deprel{dobj}
+                    at\deprel{sbu}
+                    bortføringen\deprel{subj}
+                    [.planlagt\deprel{infv} nøye\deprel{adv} ] ]
+                {\vphantom{I}.}\deprel{ip} ]
+    \end{center}
     \caption{Analysis of (\ref{ex:medat})}
     \label{figure:medat}
 \end{figure}
 
-\begin{figure}[h!]
-  \centering
-    \includegraphics{utenat.jpg}
+\begin{figure}
+    \begin{center}
+        %\includegraphics{utenat.jpg}
+        \Tree [.tror\deprel{finv}
+                jeg\deprel{subj}
+                ikke\deprel{adv}
+                [.er\deprel{dobj}
+                    det\deprel{subj}
+                    tilfeldig\deprel{spred} ]
+                {.}\deprel{ip} ]
+    \end{center}
     \caption{Analysis of (\ref{ex:utenat})}
     \label{figure:utenat}
 \end{figure}
