@@ -15,7 +15,18 @@
 \renewcommand\frac[2]{\mathchoice{\oldfrac{#1}{#2}}{\nicefrac{#1}{#2}}{\nicefrac{#1}{#2}}{\nicefrac{#1}{#2}}}
 
 \title{The Norwegian Dependency Treebank}
-\author{Folk}
+%\author{Folk}
+
+\author{\bf Per Erik Solberg$^{\ast}$, Arne Skj{\ae}rholt$^{\dagger}$, 
+        Lilja {\O}vrelid$^{\dagger}$, Kristin Hagen$^{\ddag}$, 
+        and Janne Bondi Johannessen$^{\ddag}$\\[0.2ex]
+         \mbox{}$^{\ast}$ Spr{\aa}kbanken, The National Library of Norway\\[0.2ex]
+         \mbox{}$^{\dagger}$ Department of Informatics, University of Oslo\\[0.2ex]
+        \mbox{}$^{\ddag}$ Department of Linguistics and Scandinavian Studies, University of Oslo%
+        \vspace*{1.5ex}}
+        
+
+\date{}
 
 \frenchspacing
 
@@ -29,37 +40,40 @@ language and may be employed for central tasks such as part-of-speech
 tagging and syntactic parsing. For the past decade, dependency
 analysis has become an increasingly popular form of syntactic analysis
 and has been claimed to strike a balance between a depth of analysis
-sufficient for many down-stream applications and accuracy and
+sufficient for many down-stream applications, as well as providing accuracy and
 efficiency in parsing with these types representations. The CoNLL
 shared tasks devoted to dependency parsing and joint syntactic and
 semantic parsing,
 \cite<see e.g.,>{Niv:Hal:Kub:07,Haj:Cia:Joh:09}, have been instrumental in
 establishing a common set of dependency treebanks for a range of
-languages such as English, Swedish, Czech and Arabic, \footnote{Note
-  that several of the treebanks employed for the shared task were not
-  originally dependency treebanks, but rather converted from
-  phrase-structure representations.}  thus enabling multilingual evaluation of different systems.  The increased
+languages such as English, Swedish, Czech and Arabic, %% \footnote{Note
+%%   that several of the treebanks employed for the shared task were not
+%%   originally dependency treebanks, but rather converted from
+%%   phrase-structure representations.}
+thus enabling multilingual evaluation of different systems.  The increased
 availability of dependency parsers has spurred down-stream use of
 dependency representations in diverse tasks such as Machine Translation \shortcite{Din:Pal:05}, Sentiment Analysis \shortcite{Wil:Wie:Hof:09} and Negation Resolution \shortcite{Lap:Vel:Ovr:12}.
 
-Until recently, no (dependency)
-treebank has been publically available for Norwegian.\footnote{Possibly comment on INESS?} Hence,
-the progress in parsing and applications described above has not been
-possible for Norwegian.  At present, however, the Language Bank,
-hosted at the Norwegian National Library, is in the process of
-completing a two year project with the aim of producing a dependency
-treebank for Norwegian. 
+Until recently, no treebank has been available for
+Norwegian.\footnote{A treebank of deep linguistic analysis couched in
+  the LFG framework is however under development at the University of Bergen
+  by the INNESS project.} Hence, the progress in parsing and applications
+described above has not been possible for Norwegian.  At present,
+however, Spr{\aa}kbanken, at the Norwegian National Library,
+is in the process of completing a two year project with the aim of
+producing a dependency treebank for Norwegian.
 
-In this paper we present the result of this project, Norwegian Dependency Treebank (NDT), a
-syntactic treebank which encompasses treebanks for both variants of
-Norwegian (Bokm{\aa}l and Nynorsk)\footnote{On the distinction between
-  BM and NN}. In the following, we describe the main annotation
-principles employed in the syntactic analysis of the treebank and
-discuss the selection of texts. We then go on to describe the
-annotation process in some detail. Finally, we present first results
-for data-driven dependency parsing of Norwegian.
+In this paper we present the result of this project, the Norwegian
+Dependency Treebank (NDT), a syntactic treebank which encompasses
+treebanks for both variants of Norwegian (Bokm{\aa}l and
+Nynorsk).\footnote{These are the two written varieties of Norwegian.}
+In the following, we describe the main annotation principles employed
+in the syntactic analysis of the treebank and discuss the selection of
+texts. We then go on to describe the annotation process in some
+detail. Finally, we present first results for data-driven dependency
+parsing of Norwegian.
 
-%311 words
+%312 words
 
 \section{Annotation principles}
 
@@ -136,7 +150,7 @@ In NDT, sentences such as (\ref{ex:medat}) and (\ref{ex:utenat}) are analyzed si
 % 885 words
 
 \section{Texts}
-NDT currently consist of 282 000 tokens of Norwegian Bokmål and 263 000 tokens of Norwegian Nynorsk, but these numbers will grow somewhat until the end of the project period in January 2014. Comparable treebanks such as the Prague Dependency Treebank and the TIGER treebank, contain mainly newspaper text \cite{Boh:Haj:Hla:2003,Bra:2004}. Other treebanks, e.g. Penn Treebank and Talbanken \cite{Mar:San:Mar:93,Niv:Nil:Hal:2006}, however, also contain texts from other sources, such as factual prose, fiction and text in a more colloquial style style. Since newspaper text is frequently used for various NLT tasks and also easily available, we chose to use mostly newspaper text in the NDT, but we added small amounts of text from government reports, parliament transcripts and more colloquial texts from blogs. In the final version of NDT, it will be possible to extract specific genres of text.
+NDT currently consist of 282 000 tokens of Norwegian Bokmål and 263 000 tokens of Norwegian Nynorsk.\footnote{All numbers and results will be updated to reflect the finalized treebank for the final version of the paper.} Comparable treebanks such as the Prague Dependency Treebank and the TIGER treebank, contain mainly newspaper text \cite{Boh:Haj:Hla:2003,Bra:2004}. Other treebanks, e.g. Penn Treebank and Talbanken \cite{Mar:San:Mar:93,Niv:Nil:Hal:2006}, however, also contain texts from other sources, such as factual prose, fiction and text in a more colloquial style style. Since newspaper text is frequently used for various NLT tasks and also easily available, we chose to use mostly newspaper text in the NDT, but we added small amounts of text from government reports, parliament transcripts and more colloquial texts from blogs. In the final version of NDT, it will be possible to extract specific genres of text.
 
 \ctable[botcap,
     caption={Distribution of texts in the treebanks},
@@ -316,8 +330,22 @@ Bohnet\&Nivre & 92.94 & 90.56 & 92.78 & 90.18
 Table \ref{tb:parsing} presents the dependency parsing results
 obtained for NDT. We find that the \citeA{Boh:Niv:12} parser
 outperforms the other parsers and obtains labeled accuracy scores of
-90.6 and 90.2 for the BM and NN treebanks, respectively.
-The optimized Maltparser model performs onlys slightly lower, at 89.8 and 89.0. 
+90.6 and 90.2 for the BM and NN treebanks, respectively.  The
+optimized Maltparser model performs onlys slightly lower, at 89.8 and
+89.0.  These are encouraging results which indicate that the treebank
+provides a good basis for parser development.
+
+\section{Conclusion}
+We have presented the first treebank for Norwegian, a treebank
+containing dependency representations for a large sample of Norwegian
+texts (in both of the written standards). We have described the
+annotation principles that motivate the analyses, the collections of
+texts, as well as the annotation process and presented results for
+inter-annotator agreement, showing that the syntactic annotation is of
+a consistency comparable to other large treebank initiatives. Finally,
+we have presented first results for Norwegian dependency parsing,
+contrasting three state-of-the-art data-driven dependency parsers.
+
 
 \clearpage
 \bibliography{ndt}
