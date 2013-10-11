@@ -90,16 +90,12 @@ Independent syntactic annotation guidelines for the NDT have been developed in a
  \item \textbf{Quick annotation} As the size of the treebank matters for most potential users, the annotators should be able to annotate relatively quickly.
  \item \textbf{Easy querying}It should be easy to make queries for specific constructions, using treebank query tools such as TreeQuery \cite{Paj:Ste:09}.
 \end{enumerate}
-In what remains of this section, we will show examples of how we tried to implement these principles:
-
- 1. 
-%The Norwegian Reference Grammar \cite{Faa:Lie:Van:97} was used as a norm.
-2. It had to be possible for annotators to implement the analyzes consistently. 3. As the size of the treebank matters for most potential users, the annotators should be able to annotate relatively quickly.
-%, without spending too much time pondering over the correct analysis of specific constructions.
-4. It should be relatively easy to make queries for specific constructions, using treebank query tools such as TreeQuery \cite{Paj:Ste:09}. In what remains of this section, we will show examples of how we tried to implement these principles:
+In what remains of this section, we will show examples of how we tried to implement these principles.
 
 \subsection{Adverbials}
-In treebanks comparable to the NDT, e.g. the Swedish treebank Talbanken \cite{Niv:Nil:Hal:2006}, there are separate dependency relations for different types of adverbials, such as time adverbials, manner adverbials and place adverbials. Some treebanks, e.g. PROIEL \cite{Hau:Joh:Eck:Wel:Her:Mut:2009}, distinguish between adverbials selected by specific predicates, such as motion verbs, and adverbial modifiers which are not obligatory. There may be good linguistic reasons for making such distinctions. However, we found that it would be difficult to do so and at the same time comply with the consistency and time constraints of principle 2 and 3, as there would be frequent borderline cases. Unless the guidelines contained rules which were clear and easy to follow for such cases,chances are high that an annotator would not be able to annotate similar cases in a uniform manner, and inter-annotator consistency would also be difficult to obtain. And even with such rules in place, annotators would spend a considerable amount of time deliberating which dependency relation to choose. We have therefore chosen a more shallow analysis: All adverbials, regardless of type and of whether or not they are selected, receive a uniform dependency relation - ADV.
+In treebanks comparable to the NDT, e.g. the Swedish treebank Talbanken \cite{Niv:Nil:Hal:2006}, there are separate dependency relations for different types of adverbials, such as time adverbials, manner adverbials and place adverbials. Some treebanks, e.g. PROIEL \cite{Hau:Joh:Eck:Wel:Her:Mut:2009}, distinguish between adverbials selected by specific predicates, such as motion verbs, and adverbial modifiers which are not obligatory. There may be good linguistic reasons for making such distinctions. However, we found that it would be difficult to do so and at the same time comply with the consistency and time constraints of principle 2 and 3, as there would be frequent borderline cases.
+%Unless the guidelines contained rules which were clear and easy to follow for such cases, chances are high that an annotator would not be able to annotate similar cases in a uniform manner, and inter-annotator consistency would also be difficult to obtain. And even with such rules in place, annotators would spend a considerable amount of time deliberating which dependency relation to choose. We have therefore chosen a more shallow analysis:
+All adverbials, regardless of type and of whether or not they are selected, receive a uniform dependency relation - ADV.
 
 \subsection{Transitive and intransitive prepositions}
 In other cases the pursuit of linguistic adequacy has been given priority. The sentences (\ref{ex:intrans}) and (\ref{ex:trans}) exemplify such a case:
@@ -108,19 +104,21 @@ In other cases the pursuit of linguistic adequacy has been given priority. The s
 \item\label{ex:intrans}
 \gll Per setter på CD-en.
 Per puts on CD+the
-\glt 'Per puts on the CD.'
+\glt `Per puts on the CD.'
 \glend
 
 \item\label{ex:trans}
 \gll Per sitter på stolen.
 Per sits on chair+the
-\glt 'Per sits on the chair.'
+\glt `Per sits on the chair.'
 \glend
 \end{examples}
 
-In both (\ref{ex:intrans}) and (\ref{ex:trans}) the preposition \emph{på} is followed by a noun. There are, however, strong reasons for analyzing the sentences differently. In (\ref{ex:trans}), the noun is clearly a complement to the preposition: The preposition and the noun are semantically connected, they behave as a single constituent, and the complement retains its position after the preposition if it is pronominalized. In (\ref{ex:intrans}), on the other hand, there is no obvious semantic connection between the preposition and the noun, the two words do not form a constituent together, and if the noun is pronominalized, it usually will precede the preposition. In the NDT, the noun in constructions like (\ref{ex:intrans}) would be made dependent on the verb with the dependency relation for direct objects, DOBJ, while in (\ref{ex:trans}) it is made dependent on the preposition with the dependency relation of prepositional complements, PUTFYLL.
+In both (\ref{ex:intrans}) and (\ref{ex:trans}) the preposition \emph{på} is followed by a noun. There are, however, strong reasons for analyzing the sentences differently. In (\ref{ex:trans}), the noun is clearly a complement of the preposition: The preposition and the noun are semantically connected, they behave as a single constituent, and the complement retains its position after the preposition if it is pronominalized. In (\ref{ex:intrans}), on the other hand, there is no obvious semantic connection between the preposition and the noun, the two words do not form a constituent together, and if the noun is pronominalized, it usually will precede the preposition. In the NDT, the noun in constructions like (\ref{ex:intrans}) would be made dependent on the verb with the dependency relation for direct objects, DOBJ, while in (\ref{ex:trans}) it is made dependent on the preposition with the dependency relation of prepositional complements, PUTFYLL.
 
-Annotators frequently meet preposition-noun sequences which are much less straightforward than in these examples, and they need to deliberate whether one or the other analysis is correct. We have, however, chosen to retain this distinction, to make sure that the analyses are acceptable from a linguistic point of view and also in order to achieve a uniform analysis of sentences such as (\ref{ex:intrans}) and cases where the object noun or pronoun does not follow the intransitive preposition. To ensure consistency and a high annotation speed, the annotation guidelines have a number of syntactic tests which the annotators use to distinguish between the construction \cite[54-56]{Kin:Sol:Eri:2013}.
+Annotators frequently meet preposition-noun sequences which are much less straightforward than in these examples.
+%, and they need to deliberate whether one or the other analysis is correct. We have, however, chosen to retain this distinction, to make sure that the analyses are acceptable from a linguistic point of view and also in order to achieve a uniform analysis of sentences such as (\ref{ex:intrans}) and cases where the object noun or pronoun does not follow the intransitive preposition (or particle, as these are also known).
+To ensure consistency and a high annotation speed, the annotation guidelines have a number of syntactic tests which the annotators use to distinguish between the construction \cite[54-56]{Kin:Sol:Eri:2013}.
 
 \subsection{Complementizers}
 There is no obvious head-dependent relationship between complementizers and verbs or between functional and lexical heads in general, and there is therefore not a unique answer to how such a relationship should be represented in Dependency Grammar.
