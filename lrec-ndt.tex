@@ -90,7 +90,7 @@ Independent syntactic annotation guidelines for the NDT have been developed in a
  \item \textbf{Linguistic adequacy} The annotation should as linguistically adequate as possible.
  \item \textbf{Consistency} It had to be possible for annotators to implement the analyzes consistently.
  \item \textbf{Quick annotation} As the size of the treebank matters for most potential users, the annotators should be able to annotate relatively quickly.
- \item \textbf{Easy querying}It should be easy to make queries for specific constructions, using treebank query tools such as TreeQuery \cite{Paj:Ste:09}.
+ \item \textbf{Easy querying} It should be easy to make queries for specific constructions, using treebank query tools such as TreeQuery \cite{Paj:Ste:09}.
 \end{enumerate}
 In what remains of this section, we will show examples of how we tried to implement these principles.
 
@@ -216,7 +216,7 @@ Blogs & 6
 \subsection{Annotators}
 All texts in the treebank have been manually annotated by trained linguists. A
 few of the texts have been syntactically annotated by two annotators, to
-ensure consistency (cf. \ref{sc:inter-a}). In order to speed up the annotation
+avoid inconsistencies (cf. \ref{sc:inter-a}). In order to speed up the annotation
 process, we chose to preprocess the texts using tools already available at the
 University of Oslo.
 
@@ -225,10 +225,9 @@ As is standard practice when annotating syntactic corpora, the texts to be
 annotated are automatically PoS tagged and syntactically parsed before being
 annotated, an approach which has been shown to be both fast and yielding
 high quality annotation \cite{Mar:San:Mar:93,For:Sag:10,Skjaerholt:13}.
-After tokenization, the texts to be annotated are first tagged using OBT, and
-a HMM-based overlay \cite{Johannessen:etal:12} is used to disambiguate any
-tokens with more than one tag remaining. The morphological annotation is then
-checked and corrected by an annotator using a web interface made for this
+After tokenization, the texts to be annotated are first tagged using OBT+stat,
+a rule-based Constraint Grammar tagger with a HMM-based overlay \cite{Johannessen:etal:12}.
+ The morphological annotation is then checked and corrected by an annotator using a web interface made for this
 particular task \cite{Lyn:13}. The corrected morphological annotations are
 then preprocessed by a dependency parser and imported into \app{TrEd}, the
 annotation tool developed for the Prague Dependency Treebank, which is used to
@@ -236,11 +235,11 @@ correct the output of the syntactic preprocessing and create the final
 treebank.
 
 Since there were no publicly available dependency corpora at the start of this
-project, training a data-driven dependency parser such as MaltParser was
+project, training a data-driven dependency parser was
 impossible. Therefore, the initial syntactic preprocessor was created using
-the syntactic module of OBT, which while it does not create a hierarchical
+the syntactic module of OBT, which, while it does not create a hierarchical
 structure, does provide some information about heads. On top of this we built
-a small set of rules in the CG-3 framework (<ref Bick>) to build proper
+a small set of rules in the CG-3 framework \cite{Did:2013} to build proper
 syntactic structures. This preprocessor was evaluated to get about 80\% of
 heads correct (unlabelled attachment) and both head and label (labelled
 attachment) correct in 72--74\% of cases, as shown in Table \ref{tbl:parsers}.
