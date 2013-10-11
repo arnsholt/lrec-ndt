@@ -59,9 +59,10 @@ dependency representations in diverse tasks such as Machine Translation \shortci
 Until recently, no treebank has been available for
 Norwegian.\footnote{A treebank of deep linguistic analysis couched in
   the LFG framework is however under development at the University of Bergen
-  by the INNESS project.} Hence, the progress in parsing and applications
-described above has not been possible for Norwegian.  At present,
-however, Spr{\aa}kbanken, at the Norwegian National Library,
+  by the INNESS project.}
+%Hence, the progress in parsing and applications
+%described above has not been possible for Norwegian.
+At present, however, Spr{\aa}kbanken, at the Norwegian National Library,
 is in the process of completing a two year project with the aim of
 producing a dependency treebank for Norwegian.
 
@@ -87,8 +88,8 @@ The treebank contains both morphological and syntactic annotation. The morpholog
 
 Independent syntactic annotation guidelines for the NDT have been developed in an iterative process in the beginning of the project period by the annotators working in the project\cite{Kin:Sol:Eri:2013}. When developing the annotation guidelines, four fundamental principles were taken into consideration:
 \begin{enumerate}
- \item \textbf{Linguistic adequacy} The annotation should as linguistically adequate as possible.
- \item \textbf{Consistency} It had to be possible for annotators to implement the analyzes consistently.
+ \item \textbf{Linguistic adequacy} The annotation should be as linguistically adequate as possible.
+ \item \textbf{Consistency} It had to be possible for annotators to implement the analyses consistently.
  \item \textbf{Quick annotation} As the size of the treebank matters for most potential users, the annotators should be able to annotate relatively quickly.
  \item \textbf{Easy querying} It should be easy to make queries for specific constructions, using treebank query tools such as TreeQuery \cite{Paj:Ste:09}.
 \end{enumerate}
@@ -120,12 +121,12 @@ In both (\ref{ex:intrans}) and (\ref{ex:trans}) the preposition \emph{på} is fo
 
 Annotators frequently meet preposition-noun sequences which are much less straightforward than in these examples.
 %, and they need to deliberate whether one or the other analysis is correct. We have, however, chosen to retain this distinction, to make sure that the analyses are acceptable from a linguistic point of view and also in order to achieve a uniform analysis of sentences such as (\ref{ex:intrans}) and cases where the object noun or pronoun does not follow the intransitive preposition (or particle, as these are also known).
-To ensure consistency and a high annotation speed, the annotation guidelines have a number of syntactic tests which the annotators use to distinguish between the construction \cite[54-56]{Kin:Sol:Eri:2013}.
+To ensure consistency and a high annotation speed, the annotation guidelines have a number of syntactic tests which the annotators use to distinguish between the constructions \cite[54-56]{Kin:Sol:Eri:2013}.
 
 \subsection{Complementizers}
 There is no obvious head-dependent relationship between complementizers and verbs or between functional and lexical heads in general, and there is therefore not a unique answer to how such a relationship should be represented in dependency grammar.
 %In the original formulation of Dependency Grammar, no dependency relations were indicated between function words and lexical words. Instead, a different, symmetrical relation was used (cf. \cite[361-410]{Tes:65}). In Dependency Grammar treebanks comparable to the NDT, no relations apart from assymetrical dependency relations are used. Treebanks vary with respect to the annotation of the complementizer-verbs relations and similar relations between functional and lexical heads.
-In the NDT, the verb is the head and the complementizer is a dependent on the verb. This choice is first and foremost motivated by the fourth principle stated above: that it should be easy to make queries for specific constructions. In Norwegian, complementizers are frequently dropped, as the following examples show (from the NDT):
+In the NDT, the verb is the head and the complementizer is a dependent on the verb. This choice is first and foremost motivated by the fourth principle stated above: easy querying. In Norwegian, complementizers are frequently dropped, as the following examples show (from the NDT):
 \begin{examples}
 \item\label{ex:medat}
 \gll Nå tror lokale myndigheter at bortføringen var nøye planlagt.
@@ -194,7 +195,8 @@ Noun & Determiner
 % 885 words
 
 \section{Texts}
-The NDT currently consist of 282 000 tokens of Norwegian Bokmål and 263 000 tokens of Norwegian Nynorsk.\footnote{All numbers and results will be updated to reflect the finalized treebank for the final version of the paper.} Comparable treebanks such as the Prague Dependency Treebank and the TIGER treebank, contain mainly newspaper text \cite{Boh:Haj:Hla:2003,Bra:2004}. Other treebanks, e.g. Penn Treebank and Talbanken \cite{Mar:San:Mar:93,Niv:Nil:Hal:2006}, however, also contain texts from other sources, such as factual prose, fiction and text in a more colloquial style. Since newspaper text is frequently used for various NLP tasks and is also easily available, we chose to use mostly newspaper text in the NDT, but we added small amounts of text from government reports, parliament transcripts and more colloquial texts from blogs. In the final version of the NDT, it will be possible to extract specific genres of text.
+The NDT currently consist of 282 000 tokens of Norwegian Bokmål and 263 000 tokens of Norwegian Nynorsk.\footnote{All numbers and results will be updated to reflect the finalized treebank for the final version of the paper.} Comparable treebanks such as the Prague Dependency Treebank and the TIGER treebank, contain mainly newspaper text \cite{Boh:Haj:Hla:2003,Bra:2004}. Other treebanks, e.g. Penn Treebank and Talbanken \cite{Mar:San:Mar:93,Niv:Nil:Hal:2006}, however, also contain texts from other sources, such as factual prose, fiction and text in a more colloquial style. Since newspaper text is frequently used for various NLP tasks and is also easily available, we chose to use mostly newspaper text in the NDT, but we added small amounts of text from government reports, parliament transcripts and more colloquial texts from blogs.
+%In the final version of the NDT, it will be possible to extract specific genres of text.
 
 \ctable[botcap,
     caption={Distribution of texts in the treebanks},
@@ -234,9 +236,10 @@ annotation tool developed for the Prague Dependency Treebank, which is used to
 correct the output of the syntactic preprocessing and create the final
 treebank.
 
-Since there were no publicly available dependency corpora at the start of this
-project, training a data-driven dependency parser was
-impossible. Therefore, the initial syntactic preprocessor was created using
+%Since there were no publicly available dependency corpora at the start of this
+%project, training a data-driven dependency parser was
+%impossible. Therefore, t
+The initial syntactic preprocessor was created using
 the syntactic module of OBT, which, while it does not create a hierarchical
 structure, does provide some information about heads. On top of this we built
 a small set of rules in the CG-3 framework \cite{Did:2013} to build proper
@@ -246,14 +249,15 @@ attachment) correct in 72--74\% of cases, as shown in Table \ref{tbl:parsers}.
 
 The first statistical parser trained on the corpus is that of
 \citeA{Skj:Ovr:12}, which was later used in inter-annotator agreement
-experiments of \citeA{Skjaerholt:13}, reported to reach a labelled accuracy of
+experiments by \citeA{Skjaerholt:13}, reported to reach a labelled accuracy of
 84\% and an unlabelled accuracy of 87\%. Based on this, an improved parser was
 trained which obtains an unlabelled accuracy of nearly 90\% and labelled
-accuracy of 87\%. Note that these results are not entirely comparable as they
-are evaluated on different corpora, but given the important differences in
-performance, the improved parsers are clearly better. In particular, the
-difference between the CG parser and that of \citeA{Skj:Ovr:12} resulted in
-significant increases in annotator productivity \cite{Skjaerholt:13}.
+accuracy of 87\%.
+%Note that these results are not entirely comparable as they
+%are evaluated on different corpora, but given the important differences in
+%performance, the improved parsers are clearly better. In particular, the
+%difference between the CG parser and that of \citeA{Skj:Ovr:12} resulted in
+%significant increases in annotator productivity \cite{Skjaerholt:13}.
 
 \ctable[botcap,
     caption={Preprocessor accuracies. Unlabeled (UAS) and Labeled (LAS)
@@ -314,8 +318,9 @@ MST-parser \shortcite{McD:Per:Rib:Haj:05} and the parser of
 implements global learning and a beam search for non-projective labeled
 dependency parsing. 
 This latter parser has recently outperformed pipeline systems (such as the
-Malt and MST parsers) both in terms of tagging and parsing accuracy for
-typologically diverse languages such as Chinese, English, and German. 
+Malt and MST parsers).
+%both in terms of tagging and parsing accuracy for
+%typologically diverse languages such as Chinese, English, and German. 
 For Maltparser, we trained two versions of the
 parser: one version with default settings and one optimized version,
 where the parser settings was optimized using the MaltOptimizer
@@ -364,7 +369,7 @@ annotation principles that motivate the analyses, the collections of
 texts, as well as the annotation process and presented results for
 inter-annotator agreement, showing that the syntactic annotation is of
 a consistency comparable to other large treebank initiatives. Finally,
-we have presented first results for Norwegian dependency parsing,
+we have presented the first results for Norwegian dependency parsing,
 contrasting three state-of-the-art data-driven dependency parsers.
 
 
