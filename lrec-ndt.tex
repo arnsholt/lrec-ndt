@@ -253,14 +253,14 @@ the syntactic module of OBT, which, while it does not create a hierarchical
 structure, does provide some information about heads. On top of this we built
 a small set of rules in the CG-3 framework \cite{Did:2013} to build proper
 syntactic structures. This preprocessor was evaluated to get about 80\% of
-heads correct (unlabelled attachment) and both head and label (labelled
+heads correct (unlabeled attachment) and both head and label (labeled
 attachment) correct in 72--74\% of cases, as shown in Table \ref{tbl:parsers}.
 
 The first statistical parser trained on the corpus is that of
 \citeA{Skj:Ovr:12}, which was later used in inter-annotator agreement
-experiments by \citeA{Skjaerholt:13}, reported to reach a labelled accuracy of
-84\% and an unlabelled accuracy of 87\%. Based on this, an improved parser was
-trained which obtains an unlabelled accuracy of nearly 90\% and labelled
+experiments by \citeA{Skjaerholt:13}, reported to reach a labeled accuracy of
+84\% and an unlabeled accuracy of 87\%. Based on this, an improved parser was
+trained which obtains an unlabeled accuracy of nearly 90\% and labeled
 accuracy of 87\%.
 %Note that these results are not entirely comparable as they
 %are evaluated on different corpora, but given the important differences in
@@ -299,20 +299,20 @@ To validate the consistency of the annotations produced by the different
 annotators, a set of experiments quantifying inter-annotator agreement were
 performed \cite{Skjaerholt:13}. As is common practice in the field of
 syntactic annotation \cite{Civit:ea:03,Brants:00,Bra:Han:02,Hajic:04}, the
-simple agreement measures labelled and unlabelled attachment accuracy were
+simple agreement measures labeled and unlabeled attachment accuracy were
 used. The reason for using an uncorrected measure rather than a
 chance-corrected measure such as $\kappa$ or $\pi$ is that these measures are
 not directly applicable to the task of syntactic annotation.
 
 \citeA{Skjaerholt:13} measured inter-annotator agreement as measured by
-labelled and unlabelled attachment, using a number of different preprocessors
+labeled and unlabeled attachment, using a number of different preprocessors
 from the cross lingual parsers of \citeA{Skj:Ovr:12}. Here, we will
 concentrate on the agreement using the best parser, whose performance is shown
 in Table \ref{tbl:parsers}. Using this parser, agreement was measured to be
-96.8\% unlabelled and 95.3\% labelled accuracy. These results are comparable
-to those reported for the German NEGRA \cite<92.4\% labelled
-$F_1$,>{Brants:00} and TIGER \cite<93.9\% labelled $F_1$,>{Bra:Han:02}
-treebanks and the Spanish Cat3LB treebank \cite<86.9\% labelled bracket
+96.8\% unlabeled and 95.3\% labeled accuracy. These results are comparable
+to those reported for the German NEGRA \cite<92.4\% labeled
+$F_1$,>{Brants:00} and TIGER \cite<93.9\% labeled $F_1$,>{Bra:Han:02}
+treebanks and the Spanish Cat3LB treebank \cite<86.9\% labeled bracket
 precision,>{Civit:ea:03}.
 
 \section{Dependency parsing}
