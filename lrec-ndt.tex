@@ -236,7 +236,7 @@ As is standard practice when annotating syntactic corpora, the texts to be
 annotated are automatically PoS tagged and syntactically parsed before being
 annotated, an approach which has been shown to be both fast and yielding
 high quality annotation \cite{Mar:San:Mar:93,For:Sag:10,Skjaerholt:13}.
-After tokenization, the texts to be annotated are first tagged using OBT+stat,
+After tokenization, the texts are first tagged using OBT+stat,
 a rule-based Constraint Grammar tagger with a HMM-based overlay \cite{Johannessen:etal:12}.
  The morphological annotation is then checked and corrected by an annotator using a web interface made for this
 particular task \cite{Lyn:13}. The corrected morphological annotations are
@@ -338,11 +338,11 @@ parsers were trained using default settings.
 
 For these experiments, both portions of the treebank (Bokm{\aa}l and
 Nynorsk) were split into 80-10-10 train, development and test sets.
-Standard evaluation metrics in dependency parsing are unlabeled and
-labeled attachment scores (UAS, LAS; implemented by the CoNLL
-\textsf{eval.pl} scorer).  These measure the proportion of tokens
-which are correctly attached to their head token and, for LAS,
-furthermore have been assigned the correct dependency label.
+%Standard evaluation metrics in dependency parsing are unlabeled and
+%labeled attachment scores (UAS, LAS; implemented by the CoNLL
+%\textsf{eval.pl} scorer).  These measure the proportion of tokens
+%which are correctly attached to their head token and, for LAS,
+%furthermore have been assigned the correct dependency label.
 
 
 %121 words
@@ -373,7 +373,9 @@ provides a good basis for parser development.
 \section{Conclusion}
 We have presented the first treebank for Norwegian, a treebank
 containing dependency representations for a large sample of Norwegian
-texts (in both of the written standards). We have described the
+texts
+%(in both of the written standards).
+We have described the
 annotation principles that motivate the analyses, the collections of
 texts, as well as the annotation process and presented results for
 inter-annotator agreement, showing that the syntactic annotation is of
