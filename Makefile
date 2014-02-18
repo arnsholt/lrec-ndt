@@ -1,3 +1,5 @@
+.PHONY: clean
+
 lrec-ndt_final.pdf: lrec-ndt_final.tex ndt.bib
 	pdflatex $<
 	bibtex $(basename $<)
@@ -9,3 +11,6 @@ lrec-ndt.pdf: lrec-ndt.tex ndt.bib
 	bibtex $(basename $<)
 	pdflatex $<
 	pdflatex $<
+
+clean:
+	rm -f lrec-ndt{,_final}.{aux,bbl,blg,log,pdf}
