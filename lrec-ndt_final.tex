@@ -99,9 +99,9 @@ parsing of Norwegian.
 %The NDT is released in the CoNLL format, a tab-separated table consisting of the following 10 fields: token index, word form, lemma, coarse-grained part-of-speech (POS), fine-grained POS, morphological features, index of head, dependency relation and two fields which are left blank in NDT \cite{Niv:Hal:Kub:07}. 
 %The texts in the NDT are lemmatized, morphologically tagged and annotated with dependency relations and head-dependent graphs. The lemmatization and morphological tagging follow quite closely the Oslo-Bergen Tagger (\cite{Joh:Hag:No:Lyn:2011};OBT), but a few adaptions have been made, notably for spelling variants which do not comply with the official norm for Bokmål and Nynorsk \cite<cf.>{Sol:2013}.
 
-The treebank contains both morphological and syntactic annotation. The morphological annotation follows the Oslo-Bergen Tagger (\newcite{Hag:Joh:Nok:00}, \newcite{Sol:2013}).
+The treebank contains both morphological and syntactic annotation. The morphological annotation follows the Oslo-Bergen Tagger \cite{Hag:Joh:Nok:00,Sol:2013}.
 
-Independent syntactic annotation guidelines for the NDT have been developed in an iterative process in the beginning of the project period by the annotators working in the project \cite{Kin:Sol:Eri:2013}.The annotation guidelines are, to a large extent, based on the Norwegian Reference Grammar (\newcite{Faa:Lie:Van:97}). The Dependency Grammar annotations are  inspired by the choices made in comparable treebanks, in particular the Swedish treebank Talbanken \cite{Niv:Nil:Hal:2006} and the treebank of old Indo-European languages PROIEL \cite{Hau:Joh:Eck:Wel:Her:Mut:2009}.
+Independent syntactic annotation guidelines for the NDT have been developed in an iterative process in the beginning of the project period by the annotators working in the project \cite{Kin:Sol:Eri:2013}.The annotation guidelines are, to a large extent, based on the Norwegian Reference Grammar \cite{Faa:Lie:Van:97}. The Dependency Grammar annotations are  inspired by the choices made in comparable treebanks, in particular the Swedish treebank Talbanken \cite{Niv:Nil:Hal:2006} and the treebank of old Indo-European languages PROIEL \cite{Hau:Joh:Eck:Wel:Her:Mut:2009}.
 
 When developing the annotation guidelines, four fundamental principles were taken into consideration:
 \begin{enumerate}
@@ -119,7 +119,7 @@ In some treebanks comparable to the NDT, e.g. Talbanken, there are separate depe
 We found that it would be difficult to have such distinctions and at the same time comply with the consistency and time constraints of principle 2 and 3. %, as there would be frequent borderline cases.
 %Unless the guidelines contained rules which were clear and easy to follow for such cases, chances are high that an annotator would not be able to annotate similar cases in a uniform manner, and inter-annotator consistency would also be difficult to obtain. And even with such rules in place, annotators would spend a considerable amount of time deliberating which dependency relation to choose. As adverbials are highly frequent and the time frame of the project was rather small, a fine-grained analysis of adverbials would have had a non-negligible impact on the size of the corpus.
 When making annotation choices, we also opted for analyses which are meaningful to various end user groups.
-In this light, a high level of linguistic detail is not always an advantage, as it becomes more difficult to infer grammatical patterns and extract meaningful information (see \newcite{Mar:Man:08}).
+In this light, a high level of linguistic detail is not always an advantage, as it becomes more difficult to infer grammatical patterns and extract meaningful information \cite{Mar:Man:08}.
 A fine-grained analysis of adverbials could in fact make such tasks more difficult, as distinctions between different types of adverbials frequently would be based on semantic and pragmatic considerations only, not on difference in syntactic structure.
 For example, the same preposition may express different types of adverbials in very similar contexts.
 We therefore opted for a more shallow analysis:
