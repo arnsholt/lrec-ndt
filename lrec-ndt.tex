@@ -106,10 +106,26 @@ We found that it would be difficult to have such distinctions and at the same ti
 When making annotation choices, we also opted for analyses which are meaningful to various end user groups.
 In this light, a high level of linguistic detail is not always an advantage, as it becomes more difficult to infer grammatical patterns and extract meaningful information (\citeNP<see>{Mar:Man:08}).
 A fine-grained analysis of adverbials could in fact make such tasks more difficult, as distinctions between different types of adverbials frequently would be based on semantic and pragmatic considerations only, not on difference in syntactic structure.
-For example, the same preposition may express different types of adverbials in very similar contexts.
+For example, the same preposition may express different types of adverbials in very similar contexts, as the following pair of sentences shows:
+
+\begin{examples}
+\item\label{ex:locadv}
+\gll Per jobber på en skole.
+Per works on a school
+\glt `Per works at a school.'
+\glend
+
+\item\label{ex:timeadv}
+\gll Per jobber på en mandag.
+Per works on a Monday
+\glt `Per works on a Monday.'
+\glend
+\end{examples}
+
+
 We therefore opted for a more shallow analysis:
 All adverbials, regardless of type,
-%and of whether or not they are selected,
+and of whether or not they are selected,
 receive a uniform dependency relation - ADV. 
 
 \subsection{Transitive and intransitive prepositions}
@@ -135,13 +151,15 @@ Annotators frequently meet preposition-noun sequences which are less straightfor
 
 \subsection{Complementizers}
 There is no obvious head-dependent relationship between complementizers and verbs or between lexical and function words in general, and there is therefore not a unique answer to how such a relationship should be represented in Dependency Grammar.
-%In the original formulation of Dependency Grammar, no dependency relations were indicated between function words and lexical words. Instead, a different, symmetrical relation was used (cf. \cite[361-410]{Tes:65}). 
-%In Dependency Grammar treebanks comparable to the NDT, no relations apart from assymetrical dependency relations are used.
+In the original formulation of Dependency Grammar, no dependency relations were indicated between function words and lexical words. Instead, a different, symmetrical relation was used (\citeNP<cf.>[361-410]{Tes:65}). 
+In most Dependency Grammar treebanks comparable to the NDT, no relations apart from assymetrical dependency relations between individual words are used.
+This makes the annotations easy to represent too humans and to process for standard software \cite[4]{Mar:Man:08}.
 Some annotation standards treat all relations between lexical and functional heads in the same manner. In the Standford annotation standard, the lexical word is the head whenever possible \cite[2]{Mar:Man:08}.
 In NDT, we have no uniform treatment of lexical and function words, but we have made a decision for each construction, based on the four principles given above. For example, in the case of complementizers and verbs, we have chosen to let the verb be the head and the complementizer a dependent on the verb. The reason for this is that
 %Treebanks vary with respect to the annotation of the complementizer-verbs relations and similar relations between functional and lexical heads.
 %In the NDT, the verb is the head and the complementizer is a dependent on the verb. This choice is first and foremost motivated by the fourth principle stated above: easy querying.
 complementizers are frequently dropped in Norwegian, as the following examples show (from the NDT):
+
 \begin{examples}
 \item\label{ex:medat}
 \gll Nå tror lokale myndigheter at bortføringen var nøye planlagt.
@@ -162,8 +180,27 @@ In the NDT,
 sentences such as (\ref{ex:medat}) and (\ref{ex:utenat}) are analyzed similarly: The (finite) verb of the clausal complement serves as head in both cases, and carries the dependency relation DOBJ (direct object), c.f. figure \ref{figure:medat} and \ref{figure:utenat}.
 Both will therefore be retrieved through a query for finite verbs with the dependency relation DOBJ.
 
+\subsection{Other choices of analysis}
+Table \ref{tb:choices} summarizes some choices where dependency treebanks tend to differ. The coordination analysis follows \citeNP{Niv:Nil:Hal:2006}:
+The first conjunct is the head and carries the grammatical function of the whole cooridnated structure. Subsequent conjuncts are dependent on the first with the function KOORD.
+Conjunctions are dependent on the closest conjunct to the right.
 
-Table \ref{tb:choices} summarizes some choices where dependency treebanks tend to differ.
+We have chosen to let the finite verb always be the head of a finite clause. As a consequence of this, a finite auxiliary, when present, will be head, taking the lexical verb as its dependent with the function INFV.
+Subjects will be dependents on the finite verb, while other arguments will attach to the lexical verb.
+
+Determiners are dependents on nouns in NDT, with the function DET.
+
+The analysis in figure (\ref{figure:koord}) of sentence (\ref{ex:koord}) exemplifies the annotation choices mentioned in this subsection.
+
+\begin{examples}
+\item\label{ex:koord}
+\gll Per har spist et eple og en pære
+Per has eaten an apple and a pear
+\glt `Per has eaten an apple and a pear.'
+\glend
+\end{examples}
+
+
 
 \ctable[botcap,
     caption={Annotation choices in the NDT},
@@ -210,6 +247,23 @@ Noun & Determiner
     \caption{Analysis of (\ref{ex:utenat})}
     \label{figure:utenat}
 \end{figure}
+
+\begin{figure}
+    \begin{center}
+        \Tree [.har\deprel{FINV}
+                Per\deprel{SUBJ}
+                [.spist\deprel{INFV}
+                [.eple\deprel{DOBJ}
+                    et\deprel{DET}
+                   [. pære\deprel{KOORD}
+                      og\deprel{KONJ} 
+                      en\deprel{DET}  ] ] ]
+                {.}\deprel{IP} ]
+    \end{center}
+    \caption{Analysis of (\ref{ex:koord})}
+    \label{figure:koord}
+\end{figure}
+
 
 \section{Texts}
 The NDT consist of 311 000 tokens of Norwegian Bokmål and 303 000 tokens of Norwegian Nynorsk. The texts for Bokmål and Nynorsk were collected from independent sources. Since the differences between these two written standards of Norwegian are mostly lexical and morphological, the syntactic annotation is practically identical. Comparable treebanks such as the Prague Dependency Treebank and the TIGER treebank, contain mainly newspaper text \cite{Boh:Haj:Hla:2003,Bra:2004}. Other treebanks, e.g. Penn Treebank and Talbanken \cite{Mar:San:Mar:93,Niv:Nil:Hal:2006}, however, also contain texts from other sources, such as factual prose, fiction and text in a more colloquial style.
