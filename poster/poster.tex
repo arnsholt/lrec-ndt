@@ -1,0 +1,61 @@
+\documentclass{ltgposter12}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+%% Alternativ stil på boksene.
+%\newskip\boxskip
+%\boxskip10em % Ekstra mellomrom mellom boksene.
+%
+%\setbeamertemplate{block begin}{
+%  \vskip\boxskip
+%  {\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}%
+%  \begin{beamercolorbox}[rounded=false,shadow=false,leftskip=0.5em,sep=0.5em]{block body}%
+%    \usebeamerfont{block body}%
+%    \begin{center}
+%      \usebeamerfont*{block title}\insertblocktitle
+%    \end{center}
+%    \ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+%  }
+%\setbeamertemplate{block end}{
+%  \end{beamercolorbox}
+%}
+%
+%\setbeamerfont*{itemize/enumerate subbody}{parent=itemize/enumerate body}
+%\setbeamerfont*{itemize/enumerate subsubbody}{parent=itemize/enumerate body}
+
+\title{The Norwegian Dependency Treebank}
+\author{\bf Per Erik Solberg$^{\ast}$, Arne Skj{\ae}rholt$^{\dagger}$, 
+        Lilja {\O}vrelid$^{\dagger}$, Kristin Hagen$^{\ddag}$, 
+        and Janne Bondi Johannessen$^{\ddag}$}
+\institute{$^{\ast}$ Spr{\aa}kbanken, The National Library of Norway;
+    $^{\dagger}$ Department of Informatics, University of Oslo;
+    $^{\ddag}$ Department of Linguistics and Scandinavian Studies, University
+        of Oslo}
+\conference{LREC 2014}
+
+\begin{document}
+\begin{columns}[t]
+    \begin{column}{0.25\textwidth}
+        \begin{block}{Foo}
+            Bar
+        \end{block}
+
+        \begin{block}{En til}
+            \begin{itemize}
+                \item Stuff
+            \end{itemize}
+        \end{block}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+        \begin{block}{Tittel}
+            \begin{itemize}
+                \item Foo
+                \item Bar
+                \item Blerg
+            \end{itemize}
+        \end{block}
+    \end{column}
+\end{columns}
+\end{document}
+
