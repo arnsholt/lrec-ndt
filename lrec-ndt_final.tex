@@ -25,7 +25,7 @@
 \address{         \mbox{}$^{\ast}$ Spr{\aa}kbanken, The National Library of Norway\\[0.2ex]
          \mbox{}$^{\dagger}$ Department of Informatics, University of Oslo\\[0.2ex]
         \mbox{}$^{\ddag}$ Department of Linguistics and Scandinavian Studies, University of Oslo\\
-                per.solberg@nb.no, $\{$arnskj,liljao$\}$@ifi.uio.no, $\{$kristin.hagen,j.b.johannessen$\}$@iln.uio.no
+                p.e.solberg@ifikk.uio.no, $\{$arnskj,liljao$\}$@ifi.uio.no, $\{$kristin.hagen,j.b.johannessen$\}$@iln.uio.no
 %
         \vspace*{1.5ex}}
 
@@ -76,7 +76,7 @@ dependency representations in diverse tasks such as Machine Translation \cite{Di
 Until recently, no treebank has been available for
 Norwegian.\footnote{A treebank of deep linguistic analysis couched in
   the LFG framework is however under development at the University of Bergen
-  by the INNESS project.}
+  by the INESS project.}
 %Hence, the progress in parsing and applications
 %described above has not been possible for Norwegian.
 At present, however, Spr{\aa}kbanken, at the Norwegian National Library,
@@ -161,7 +161,7 @@ Per sits on chair+the
 \glend
 \end{examples}
 
-In both (\ref{ex:intrans}) and (\ref{ex:trans}), the preposition \emph{på} is followed by a noun. There are, however, strong reasons for analyzing the sentences differently. In (\ref{ex:trans}), the noun is clearly a complement of the preposition: The preposition and the noun are semantically connected, they behave as a single constituent, and the complement retains its position after the preposition if it is pronominalized. In (\ref{ex:intrans}), there is no obvious semantic connection between the preposition and the noun, the two words do not form a constituent together, and if the noun is pronominalized, it usually will precede the preposition. In the NDT, the noun in constructions like (\ref{ex:intrans}) would be made dependent on the verb with the dependency relation for direct objects, DOBJ, while in (\ref{ex:trans}) it is made dependent on the preposition with the dependency relation of prepositional complements, PUTFYLL.
+In both (\ref{ex:intrans}) and (\ref{ex:trans}), the preposition \emph{på} is followed by a noun. There are, however, strong reasons for analyzing the sentences differently. In (\ref{ex:trans}), the noun is clearly a complement of the preposition: The preposition and the noun are semantically connected, they behave as a single constituent, and the complement retains its position after the preposition if it is pronominalized. In (\ref{ex:intrans}), there is no obvious semantic connection between the preposition and the noun, the two words do not form a constituent together, and if the noun is pronominalized, it usually will precede the preposition. In the NDT, the noun in constructions like (\ref{ex:intrans}) would be made dependent on the verb with the dependency relation for direct objects, DOBJ, while in (\ref{ex:trans}), it is made dependent on the preposition with the dependency relation of prepositional complements, PUTFYLL.
 
 Annotators frequently meet preposition-noun sequences which are less straightforward than in these examples, and they need to deliberate whether one or the other analysis is correct. We have, however, chosen to retain this distinction, to make sure that the analyses are acceptable from a linguistic point of view and also in order to achieve a uniform analysis of sentences such as (\ref{ex:intrans}) and cases where the object noun or pronoun does not follow the intransitive preposition (or particle, as these are also known). To ensure consistency and a high annotation speed (principle 2 and 3), the annotation guidelines have a number of syntactic tests which the annotators use to distinguish between the constructions \cite[54-56]{Kin:Sol:Eri:2013}.
 
@@ -170,7 +170,7 @@ There is no obvious head-dependent relationship between complementizers and verb
 In the original formulation of Dependency Grammar, no dependency relations were indicated between function words and lexical words. Instead, a different, symmetrical relation was used \cite[361-410]{Tes:65}. 
 In Dependency Grammar treebanks comparable to the NDT, no relations apart from assymetrical dependency relations are used.
 This makes the annotations easy to represent too humans and to process for standard software \cite[4]{Mar:Man:08}.
-Some annotation standards treat all relations between lexical and functional heads in the same manner. In the Standford annotation standard, the lexical word is the head whenever possible \cite[2]{Mar:Man:08}.
+Some annotation standards treat all relations between lexical and functional words in the same manner. In the Standford annotation standard, the lexical word is the head whenever possible \cite[2]{Mar:Man:08}.
 In NDT, we have no uniform treatment of lexical and function words, but we have made a decision for each construction, based on the four principles given above. For example, in the case of complementizers and verbs, we have chosen to let the verb be the head and the complementizer a dependent on the verb. The reason for this is that
 %Treebanks vary with respect to the annotation of the complementizer-verbs relations and similar relations between functional and lexical heads.
 %In the NDT, the verb is the head and the complementizer is a dependent on the verb. This choice is first and foremost motivated by the fourth principle stated above: easy querying.
@@ -190,7 +190,7 @@ I believe not it is accidental
 \glend
 \end{examples}
 
-Clausal complements of verbs such as \emph{tro}, 'believe', occur both with the complementizer \emph{at}, as in (\ref{ex:medat}), and without any complementizer, as in (\ref{ex:utenat}). If the complementizer were the head, the complement clauses in (\ref{ex:medat}) and (\ref{ex:utenat}) would have had different heads, despite their obvious similarities. This, in turn, would make it significantly more difficult to formulate queries using standard query tools and to deduce grammatical patterns more generally (cf. principle 4).
+Clausal complements of verbs such as \emph{tro}, 'believe', occur both with the complementizer \emph{at}, as in (\ref{ex:medat}), and without any complementizer, as in (\ref{ex:utenat}). If the complementizer were the head, the complement clauses in (\ref{ex:medat}) and (\ref{ex:utenat}) would have had different heads, despite their obvious similarities. This, in turn, would make it significantly more difficult to formulate queries using standard query tools, and more difficult to deduce grammatical patterns more generally (cf. principle 4).
 %The ability to retrieve constructions through queries has been important in the annotation process, notably in order to find annotation errors, and it will probably also be important to certain users of the treebank.
 In the NDT,
 sentences such as (\ref{ex:medat}) and (\ref{ex:utenat}) are analyzed similarly: The (finite) verb of the clausal complement serves as head in both cases, and carries the dependency relation DOBJ (direct object), c.f. figure \ref{figure:medat} and \ref{figure:utenat}.
@@ -198,8 +198,8 @@ Both will therefore be retrieved through a query for finite verbs with the depen
 
 \subsection{Other choices of analysis}
 Table \ref{tb:choices} summarizes some choices where dependency treebanks tend to differ. The coordination analysis follows \newcite{Niv:Nil:Hal:2006}:
-The first conjunct is the head and carries the grammatical function of the whole cooridnated structure. Subsequent conjuncts are dependent on the first with the function KOORD.
-Conjunctions are dependent on the closest conjunct to the right.
+The first conjunct is the head and carries the grammatical function of the whole coordinated structure. Subsequent conjuncts are dependent on the first with the function KOORD.
+Conjunctions are dependent on the closest conjunct to the right and receive the function KONJ.
 
 We have chosen to let the finite verb always be the head of a finite clause. As a consequence of this, a finite auxiliary, when present, will be head, taking the lexical verb as its dependent with the function INFV.
 Subjects will be dependents on the finite verb, while other arguments will attach to the lexical verb.
