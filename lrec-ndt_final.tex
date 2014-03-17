@@ -34,7 +34,7 @@
 \abstract{The Norwegian Dependency Treebank is a new syntactic treebank for Norwegian Bokmål and Nynorsk with manual syntactic and morphological annotation, developed at the National Library of Norway
 in collaboration with the University of Oslo. It is the first available treebank for Norwegian.
 This paper presents the core principles behind the syntactic annotation and how these principles were employed in certain specific cases. We then go on to the selection of texts and distribution between genres, and
-the annotation process and an evaluation of the inter-annotator agreement. Finally, we present the first results of data-driven dependency parsing of Norwegian, contrasting three state-of-the-art dependency parsers trained on the treebank. 
+the annotation process and an evaluation of the inter-annotator agreement. Finally, we present the first results of data-driven dependency parsing of Norwegian, contrasting four state-of-the-art dependency parsers trained on the treebank. 
 The consistency and the parsability of this treebank is shown to be comparable to other large treebank initiatives.  \\ \newline \Keywords{treebank, syntax, dependency grammar, annotation, inter-annotator agreement, parsing}}
 
 
@@ -367,6 +367,10 @@ Blogs & 5
 % 138 words 
 
 \section{Annotation process}
+Based on the annotation principles described above, the texts were
+annotated with morphological and syntactic information. In the
+following, we describe the annotators, their annotation workflow and
+provide inter-annotator agreement scores for the treebank.
 \subsection{Annotators}
 All texts in the treebank have been manually annotated by trained linguists. A
 few of the texts have been syntactically annotated by two annotators, to
@@ -388,28 +392,30 @@ annotation tool developed for the Prague Dependency Treebank, which is used to
 correct the output of the syntactic preprocessing and create the final
 treebank.
 
-%Since there were no publicly available dependency corpora at the start of this
-%project, training a data-driven dependency parser was
-%impossible. Therefore, t
-The initial syntactic preprocessor was created using
-the syntactic module of OBT, which, while it does not create a hierarchical
-structure, does provide some information about heads. On top of this we built
-a small set of rules in the CG-3 framework \cite{Did:2013} to build proper
-syntactic structures. This preprocessor was evaluated to get about 80\% of
-heads correct (unlabeled attachment) and both head and label (labeled
-attachment) correct in 72--74\% of cases, as shown in Table \ref{tbl:parsers}.
+Since there was no publicly available dependency treebank at the start
+of this project, training a data-driven dependency parser was
+impossible. The initial syntactic preprocessor was
+created using the syntactic module of OBT, which, while it does not
+create a connected dependency graph, does provide some information
+about heads as well as syntactic labels. On top of this we built a
+small set of rules in the CG-3 framework \cite{Did:2013} to build
+proper syntactic structures. This preprocessor was evaluated to get
+about 80\% of heads correct (unlabeled attachment) and both head and
+label (labeled attachment) correct in 72--74\% of cases, as shown in
+Table \ref{tbl:parsers} (CG).
 
 The first statistical parser trained on the corpus is that of
-\newcite{Skj:Ovr:12}, which was later used in inter-annotator agreement
-experiments by \newcite{Skjaerholt:13}, reported to reach a labeled accuracy of
-84\% and an unlabeled accuracy of 87\%. Based on this, an improved parser was
-trained which obtains an unlabeled accuracy of nearly 90\% and labeled
-accuracy of 87\%.
-%Note that these results are not entirely comparable as they
-%are evaluated on different corpora, but given the important differences in
-%performance, the improved parsers are clearly better. In particular, the
-%difference between the CG parser and that of \citeA{Skj:Ovr:12} resulted in
-%significant increases in annotator productivity \cite{Skjaerholt:13}.
+\newcite{Skj:Ovr:12}, which was later used in inter-annotator
+agreement experiments by \newcite{Skjaerholt:13}, reported to reach a
+labeled accuracy of 84\% and an unlabeled accuracy of 87\% on a
+preliminary version of the treebank. Based on this, an improved parser
+was trained which obtains an unlabeled accuracy of nearly 90\% and
+labeled accuracy of 87\%.
+Note that these results are not entirely comparable as they
+are evaluated on different corpora, but given the important differences in
+performance, the improved parsers are clearly better. In particular, the
+difference between the CG parser and that of \cite{Skj:Ovr:12} resulted in
+significant increases in annotator productivity \cite{Skjaerholt:13}.
 
 \ctable[botcap,
     caption={Preprocessor accuracies. Unlabeled (UAS) and Labeled (LAS)
@@ -465,37 +471,46 @@ agreement on the NDT data is extremely high: scoring an $\alpha$ of about
 98\%, among the highest of all the data sets studied.
 
 \section{Dependency parsing}
-%TO-DO: note that final version of the paper will contain results from the final version of the treebank
-An important aspect of treebank annotation relates to its \emph{parsability},
-i.e. the quality of syntactic parsers that can be acquired based on
-the treebank data.  In order to investigate the parser quality we can
-expect from the NDT, we have evaluated three state-of-the-art dependency
-parsers on the material: Maltparser \cite{Niv:Hal:Nil:06},
-MST-parser \cite{McD:Per:Rib:Haj:05} and the parser of
-\newcite{Boh:Niv:12}. These implement different parsing strategies: Maltparser is a transition-based parser with local learning and greedy search, MST is a graph-based dependency parser implementing global, near-exhaustive search and the \newcite{Boh:Niv:12} parser is a transition-based dependency parser with joint tagger that
-implements global learning and a beam search for non-projective labeled
-dependency parsing. 
-This latter parser has recently outperformed pipeline systems (such as the
-Malt and MST parsers).
-%both in terms of tagging and parsing accuracy for
-%typologically diverse languages such as Chinese, English, and German. 
+An important aspect of treebank annotation relates to its
+\emph{parsability}, i.e. the quality of syntactic parsers that can be
+acquired based on the treebank data. As mentioned already, annotation
+choices can have a clear influence on parse results
+\cite{Sch:Abe:Rap:12}. In the following sections we report on a set of experiments evaluating the performance reached by several data-driven dependency parsers on the treebank.
+ 
+\subsection{Parsers}
+In order to investigate the parser quality we
+can expect from the NDT, we have evaluated four state-of-the-art
+dependency parsers on the material: Maltparser \cite{Niv:Hal:Nil:06},
+MST-parser \cite{McD:Per:Rib:Haj:05} and the parsers of
+\newcite{Boh:10} and \newcite{Boh:Niv:12}. These implement different
+parsing strategies: Maltparser is a transition-based parser with local
+learning and greedy search, MST is a graph-based dependency parser
+implementing global, near-exhaustive search, the \newcite{Boh:10}
+parser provides a more efficient implementation of the second order
+maximum spanning tree algorithm, combined with perceptron learning and
+the \newcite{Boh:Niv:12} parser is a transition-based dependency
+parser with joint tagger that implements global learning and a beam
+search for non-projective labeled dependency parsing.  This latter
+parser has recently outperformed pipeline systems (such as the Malt
+and MST parsers) both in terms of tagging and parsing accuracy for
+typologically diverse languages such as Chinese, English, and German.
+
+\subsection{Experimental setting}
+For these experiments, both portions of the treebank (Bokm{\aa}l and
+Nynorsk) were split into 80-10-10 train, development and test sets. The development sets were used for tuning of the MaltOptimizer. Parse results are reported on the held-out test set.
+
+Standard evaluation metrics in dependency parsing are unlabeled and
+labeled attachment scores (UAS, LAS; implemented by the CoNLL
+\textsf{eval.pl} scorer). These measure the proportion of tokens
+which are correctly attached to their head token and, for LAS,
+furthermore have been assigned the correct dependency label.
+
 For Maltparser, we trained two versions of the
 parser: one version with default settings and one optimized version,
-where the parser settings was optimized using the MaltOptimizer
-software \cite{Bal:Niv:12}. Both the MST and \newcite{Boh:Niv:12}
+where the parser settings were optimized using the MaltOptimizer
+software \cite{Bal:Niv:12}. The MST, \newcite{Boh:10} and \newcite{Boh:Niv:12} 
 parsers were trained using default settings.
-
-For these experiments, both portions of the treebank (Bokm{\aa}l and
-Nynorsk) were split into 80-10-10 train, development and test sets.
-%Standard evaluation metrics in dependency parsing are unlabeled and
-%labeled attachment scores (UAS, LAS; implemented by the CoNLL
-%\textsf{eval.pl} scorer).  These measure the proportion of tokens
-%which are correctly attached to their head token and, for LAS,
-%furthermore have been assigned the correct dependency label.
-
-
-%121 words
-
+The Maltparser, MST and \newcite{Boh:10} parsers were trained and tested using gold PoS-tags, whereas the \newcite{Boh:Niv:12} parser performs joint tagging and parsing, hence supplies its own PoS-tags.
 
 \ctable[botcap,
     caption={Dependency parsing results for the NDT},
@@ -504,20 +519,27 @@ Nynorsk) were split into 80-10-10 train, development and test sets.
         \FL
     & \multicolumn{2}{c@{\hspace{2em}}}{Bokm{\aa}l (BM)} & \multicolumn{2}{c}{Nynorsk (NN)} \NN
     & UAS & LAS  & UAS & LAS \ML
-Malt default & 88.27 & 85.03 & 87.54 & 83.82 \NN
-Malt optimized & 92.19 & 89.82 & 91.57 & 88.98 \NN
-MST  & 91.69 & 88.26 & 91.54 & 87.80 \NN
-Bohnet\&Nivre & 92.94 & 90.56 & 92.78 & 90.18 
+Malt default & 88.02 & 84.57 & 87.09 & 83.59 \NN
+Malt optimized & 91.96 & 89.61 & 91.53 & 89.41 \NN
+MST  & 91.97 & 88.37 & 91.23 & 87.64 \NN
+Bohnet (2010)  & {\bf 92.84} & {\bf 90.41} & {\bf 92.12} & {\bf 89.54} \NN\hline
+Bohnet\&Nivre (2012) & 90.68 & 87.74 & 89.85 & 86.90 
         \LL
     }
 
+\subsection{Results}
 Table \ref{tb:parsing} presents the dependency parsing results
-obtained for the NDT. We find that the \newcite{Boh:Niv:12} parser
+obtained for the NDT. We find that the \newcite{Boh:10} parser
 outperforms the other parsers and obtains labeled accuracy scores of
-90.6 and 90.2 for the BM and NN treebanks, respectively.  The
-optimized Maltparser model performs only slightly lower, at 89.8 and
-89.0.  These are encouraging results which indicate that the treebank
-provides a good basis for parser development.
+90.4 and 89.5 for the BM and NN treebank sections, respectively.  The
+optimized Maltparser model performs only slightly lower, at 89.6 and
+89.4 for these same data.  These are encouraging results which
+indicate that the treebank provides a good basis for parser
+development. We also find that the \newcite{Boh:Niv:12} parser obtains
+LAS of 87.7 and 86.9 for the BM and NN sections. Note that these
+numbers are not comparable to the other parse results due to the fact
+that this parser solves a more difficult problem: joint PoS-tagging
+and parsing.
 
 \section{Conclusion}
 We have presented the first treebank for Norwegian, a treebank
@@ -530,11 +552,11 @@ texts, as well as the annotation process and presented results for
 inter-annotator agreement, showing that the syntactic annotation is of
 a consistency comparable to other large treebank initiatives. Finally,
 we have presented the first results for Norwegian dependency parsing,
-contrasting three state-of-the-art data-driven dependency parsers.
+contrasting four state-of-the-art data-driven dependency parsers.
 
 \section{Acknowledgements}
 
-Place all acknowledgements (including those concerning research grants and funding) in a separate section at the end of the article.
+The authors would like to thank the two other annotators of the NDT (in addition to the first author): Kari Kinn and Pål Kristian Eriksen, as well as Spr{\aa}kbanken at the National Library for funding the annotation of the treebank. Thanks also to the anonymous reviewers of the papers for their useful comments.
 
 %\section{References}
 
