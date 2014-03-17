@@ -1,0 +1,7 @@
+@InProceedings{Niv:Hal:Kub:07,
+  author = 	 {Joakim Nivre and Johan Hall and Sandra K{\"u}bler and Ryan McDonald and Jens Nilsson and Sebastian Riedel and Deniz Yuret},
+  title = 	 {{C}o{NLL} 2007 {S}hared {T}ask on {D}ependency {P}arsing},
+  booktitle =	 {Proceedings of the {CoNLL} {S}hared {T}ask Session of {EMNLP-CoNLL} 2007},
+  pages =	 {915-932},
+  year =	 2007
+}
