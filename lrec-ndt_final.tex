@@ -29,18 +29,13 @@
 %
         \vspace*{1.5ex}}
 
-%% \name{Per Erik Solberg$^{\ast}$, Arne Skj{\ae}rholt$^{\dagger}$, Lilja {\O}vrelid$^{\dagger}$, Kristin Hagen$^{\ddag}$, Janne Bondi Johannessen$^{\ddag}$}
-
-%% \address{ Spr{\aa}kbanken, Department of Informatics, Department of Linguistics and Scandinavian Studies \\
-%%                National Library, University of Oslo, University of Oslo \\
-%%                author1@xxx.yy, author2@zzz.edu, author3@hhh.com\\}
 
 
 \abstract{The Norwegian Dependency Treebank is a new syntactic treebank for Norwegian Bokmål and Nynorsk with manual syntactic and morphological annotation, developed at the National Library of Norway
 in collaboration with the University of Oslo. It is the first available treebank for Norwegian.
 This paper presents the core principles behind the syntactic annotation and how these principles were employed in certain specific cases. We then go on to the selection of texts and distribution between genres, and
 the annotation process and an evaluation of the inter-annotator agreement. Finally, we present the first results of data-driven dependency parsing of Norwegian, contrasting three state-of-the-art dependency parsers trained on the treebank. 
-The consistency and the parsability of this treebank is shown to be comparable to other large treebank initiatives.  \\ \newline \Keywords{keyword A, keyword B, keyword C}}
+The consistency and the parsability of this treebank is shown to be comparable to other large treebank initiatives.  \\ \newline \Keywords{treebank, syntax, dependency grammar, annotation, inter-annotator agreement, parsing}}
 
 
 
@@ -77,21 +72,24 @@ Until recently, no treebank has been available for
 Norwegian.\footnote{A treebank of deep linguistic analysis couched in
   the LFG framework is however under development at the University of Bergen
   by the INESS project.}
-%Hence, the progress in parsing and applications
-%described above has not been possible for Norwegian.
+Hence, the progress in parsing and applications
+described above has not been possible for Norwegian.
 At present, however, Spr{\aa}kbanken, at the Norwegian National Library,
-is in the process of completing a two year project with the aim of
+has just completed a two year project with the aim of
 producing a dependency treebank for Norwegian.
 
-In this paper we present the result of this project, the Norwegian
-Dependency Treebank (NDT)\footnote{In the development phase, the treebank has also been referred to as Språkbanken's Gold Standard Corpus.}, a syntactic treebank which encompasses
-treebanks for both variants of Norwegian (Bokm{\aa}l and
-Nynorsk).\footnote{These are the two written varieties of Norwegian.}
-We describe the main annotation principles employed
+In this paper we present the Norwegian Dependency Treebank
+(NDT)\footnote{In the development phase, the treebank has also been
+  referred to as Språkbanken's Gold Standard Corpus.}, a syntactic
+treebank which encompasses treebanks for both variants of Norwegian
+(Bokm{\aa}l and Nynorsk).\footnote{These are the two written varieties
+  of Norwegian.}  We describe the main annotation principles employed
 in the syntactic analysis of the treebank and discuss the selection of
 texts. We then go on to describe the annotation process in some
-detail. Finally, we present first results for data-driven dependency
-parsing of Norwegian.
+detail, describing general annotation principles, annotation choices
+for different linguistic constructions, preprocessing of data and
+measures of inter-annotator agreement. Finally, we present first
+results for data-driven dependency parsing of Norwegian.
 
 %312 words
 
