@@ -38,17 +38,48 @@
 \begin{document}
 \begin{columns}[t]
     \begin{column}{0.25\textwidth}
-        \begin{block}{Foo}
-            Bar
+        \begin{block}{Introduction}
+            \begin{itemize}
+              \item The Norwegian Dependency Treebank (NDT) is a new syntactic treebank for Norwegian Bokmål and Norwegian Nynorsk, developed at the National Library of Norway
+              \item Manually annotated with pos-tags, morphological features, syntactic functions and dependency graphs
+              \item 600 000 tokens, equally distributed between Bokmål and Nynorsk
+              \item Mostly newspaper text, but also small portions of texts from government reports, parliament transcripts and blogs
+              \item Consistency and parsability comparable to other treebank projects
+            \end{itemize}
         \end{block}
 
-        \begin{block}{Et eksempel}
-            \ex\begingl
-                \gla Dette er eksempelet. //
-                \glb This is the.example. //
-                \glft `This is the example.' //
-            \endgl\xe
+        \begin{block}{Annotation principles}
+          \begin{enumerate}
+           \item \textbf{Linguistic adequacy:} The annotation should be as linguistically adequate as possible.
+           \item \textbf{Consistency:} It had to be possible for annotators to implement the analyses consistently.
+           \item \textbf{Quick annotation:} As size matters for most users, the annotators should be able to annotate quickly.
+           \item \textbf{Easy retrieval:} It should be easy to retrieve specific constructions.
+          \end{enumerate}
         \end{block}
+        \begin{block}{Annotation example 1: Complementizers}
+%          \begin{itemize}
+%           \item Subordinate clauses are always headed by the finite verb, not the complementizer, cf. (\ref{medat}) and the analysis in figure ?????
+            \ex\label{medat}\begingl
+                \gla Nå tror lokale myndigheter at bortføringen var nøye planlagt. //
+                \glb now believe local authorities that.comp abduction+the was carefully planned //
+                \glft`Local authorities now believe that the abduction was carefully planned.' //
+           \endgl\xe
+%           \item This makes it possible to have a unified analysis of subordinate clauses with and without a complementizer, cf. (\ref{utenat}) and the analysis in figure ????
+            \ex\label{utenat}\begingl
+                \gla Jeg tror ikke det er tilfeldig. //
+                \glb I believe not it is accidental //
+                \glft `I don't belive that it is accidental.' //
+           \endgl\xe
+%          \end{itemize}
+        \end{block}
+        \begin{block}{Annotation example 2: Lexical and function words}
+            \ex\label{utenat}\begingl
+                \gla Per har spist et eple og en pære //
+                \glb Per has eaten an apple and a pear //
+                \glft `Per has eaten an apple and a pear.' //
+           \endgl\xe
+        \end{block}
+
     \end{column}
     \begin{column}{0.5\textwidth}
         \begin{block}{Tittel}
