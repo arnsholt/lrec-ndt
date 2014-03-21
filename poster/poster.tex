@@ -3,6 +3,11 @@
 \usepackage{expex}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage{tikz-qtree}
+
+\newcommand\deprel[1]{\\\textsc{#1}}
+
+\tikzset{level distance=120pt}
 
 %% Alternativ stil på boksene.
 %\newskip\boxskip
@@ -79,9 +84,55 @@
                 \glft `Per has eaten an apple and a pear.' //
            \endgl\xe
         \end{block}
-
     \end{column}
-    \begin{column}{0.5\textwidth}
+
+    \begin{column}{0.20\textwidth}
+        %\begin{block}{Foo}
+            \begin{center}
+                \Tree [.\shortstack{tror\deprel{FINV}}
+                    \shortstack{Nå\deprel{ADV}}
+                    [.\shortstack{myndigheter\deprel{SUBJ}}
+                    \shortstack{lokale\deprel{ATR}} ]
+                    [.\shortstack{var\deprel{DOBJ}}
+                        \shortstack{at\deprel{SBU}}
+                        \shortstack{bortføringen\deprel{SUBJ}}
+                        [.\shortstack{planlagt\deprel{infv}} \shortstack{nøye\deprel{ADV}} ] ]
+                    \shortstack{\vphantom{I}.\deprel{IP}} ]
+            \end{center}
+        %\end{block}
+
+        \vspace{5cm}
+
+        %\begin{block}{Foo}
+            \begin{center}
+                \Tree [.\shortstack{tror\deprel{FINV}}
+                    \shortstack{jeg\deprel{SUBJ}}
+                    \shortstack{ikke\deprel{ADV}}
+                    [.\shortstack{er\deprel{DOBJ}}
+                        \shortstack{det\deprel{SUBJ}}
+                    \shortstack{tilfeldig\deprel{SPRED}} ]
+                    \shortstack{\vphantom{I}.\deprel{IP}} ]
+            \end{center}
+        %\end{block}
+
+        \vspace{5cm}
+
+        %\begin{block}{Foo}
+            \begin{center}
+                \Tree [.\shortstack{har\deprel{FINV}}
+                        \shortstack{Per\deprel{SUBJ}}
+                        [.\shortstack{spist\deprel{INFV}}
+                        [.\shortstack{eple\deprel{DOBJ}}
+                            \shortstack{et\deprel{DET}}
+                        [.\shortstack{pære\deprel{KOORD}}
+                            \shortstack{og\deprel{KONJ}}
+                            \shortstack{en\deprel{DET}}  ] ] ]
+                        \shortstack{\vphantom{I}.\deprel{IP}} ]
+            \end{center}
+        %\end{block}
+    \end{column}
+
+    \begin{column}{0.45\textwidth}
         \begin{block}{Tittel}
             \begin{itemize}
                 \item Foo
