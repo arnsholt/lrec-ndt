@@ -1,5 +1,6 @@
 \documentclass{ltgposter12}
 
+\usepackage{ctable}
 \usepackage{expex}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -47,7 +48,7 @@
             \begin{itemize}
               \item The Norwegian Dependency Treebank (NDT) is a new syntactic treebank for Norwegian Bokmål and Norwegian Nynorsk, developed at the National Library of Norway
               \item Manually annotated with pos-tags, morphological features, syntactic functions and dependency graphs
-              \item 600 000 tokens, equally distributed between Bokmål and Nynorsk
+              \item $600\,000$ tokens, equally distributed between Bokmål and Nynorsk
               \item Mostly newspaper text, but also small portions of texts from government reports, parliament transcripts and blogs
               \item Consistency and parsability comparable to other treebank projects
             \end{itemize}
@@ -133,12 +134,66 @@
     \end{column}
 
     \begin{column}{0.45\textwidth}
-        \begin{block}{Tittel}
-            \begin{itemize}
-                \item Foo
-                \item Bar
-                \item Blerg
-            \end{itemize}
+        \begin{block}{Annotation process}
+            \begin{columns}[T]
+                \begin{column}{0.45\textwidth}
+                    \begin{enumerate}
+                        \item Tokenization and PoS tagging
+                        \item Correction of PoS tags by annotator
+                        \item Dependency parsing
+                        \item Correction of syntactic analyses
+                    \end{enumerate}
+                \end{column}
+
+                \begin{column}{0.45\textwidth}
+                    \begin{itemize}
+                        \item Two full-time annotators, both trained linguists
+                        \item PoS tagger: 96\% accuracy
+                        \item Parser: 84\% LAS/87\% UAS
+                        \item Good inter-annotator agreement, both as measured
+                            by labeled accuracy and Krippendorff's $\alpha$
+                    \end{itemize}
+                \end{column}
+            \end{columns}
+        \end{block}
+
+        \begin{block}{Composition}
+            \begin{tabular}{lr@{\%\hspace{0.5em}}}
+        \FL
+        Source & \multicolumn{1}{c}{Fraction} \ML
+Newspaper text & 82 \NN
+Government reports & 7 \NN
+Parliament transcripts & 6 \NN
+Blogs & 5
+        \LL
+            \end{tabular}
+        \end{block}
+
+        \begin{block}{Parseability}
+            \begin{columns}[T]
+                \begin{column}{0.45\textwidth}
+                    \begin{itemize}
+                        \item 80-10-10 train/development/test
+                        \item Optimized setting found using MaltOptimizer
+                        \item Malt, MST and Bohnet parsers evaluated on gold
+                            PoS tags
+                        \item Bohnet\&Nivre parser jointly parses and PoS tags
+                    \end{itemize}
+                \end{column}
+                \begin{column}{0.45\textwidth}
+                    \begin{tabular}{lll@{\hspace{2em}}ll}
+                        \FL
+                        & \multicolumn{2}{c@{\hspace{2em}}}{Bokm{\aa}l (BM)} & \multicolumn{2}{c}{Nynorsk (NN)} \NN
+                        & UAS & LAS  & UAS & LAS \ML
+                        Malt default & 88.02 & 84.57 & 87.09 & 83.59 \NN
+                        Malt optimized & 91.96 & 89.61 & 91.53 & 89.41 \NN
+                        MST  & 91.97 & 88.37 & 91.23 & 87.64 \NN
+                        Bohnet (2010)  & {\bf 92.84} & {\bf 90.41} & {\bf 92.12} & {\bf 89.54} \NN\hline
+                        Bohnet\&Nivre (2012) & 90.68 & 87.74 & 89.85 & 86.90
+                        \LL
+                    \end{tabular}
+                \end{column}
+            \end{columns}
         \end{block}
     \end{column}
 \end{columns}
