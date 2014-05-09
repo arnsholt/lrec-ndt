@@ -9,6 +9,7 @@
 \newcommand\deprel[1]{\\\textsc{#1}}
 
 \tikzset{level distance=120pt}
+\tikzstyle{every picture}+=[remember picture]
 
 %% Alternativ stil på boksene.
 %\newskip\boxskip
@@ -68,67 +69,81 @@
             \ex\label{medat}\begingl
                 \gla Nå tror lokale myndigheter at bortføringen var nøye planlagt. //
                 \glb now believe local authorities that.comp abduction+the was carefully planned //
+                    \tikz \node[coordinate, xshift=28cm, yshift=-1cm] (medat_from) {};
                 \glft`Local authorities now believe that the abduction was carefully planned.' //
            \endgl\xe
 %           \item This makes it possible to have a unified analysis of subordinate clauses with and without a complementizer, cf. (\ref{utenat}) and the analysis in figure ????
             \ex\label{utenat}\begingl
                 \gla Jeg tror ikke det er tilfeldig. //
                 \glb I believe not it is accidental //
+                    \tikz \node[coordinate, xshift=15cm, yshift=-1cm] (utenat_from) {};
                 \glft `I don't belive that it is accidental.' //
            \endgl\xe
 %          \end{itemize}
         \end{block}
         \begin{block}{Annotation example 2: Lexical and function words}
-            \ex\label{utenat}\begingl
+            \ex\label{coord}\begingl
                 \gla Per har spist et eple og en pære //
                 \glb Per has eaten an apple and a pear //
+                    \tikz \node[coordinate, xshift=15cm, yshift=-1cm] (coord_from) {};
                 \glft `Per has eaten an apple and a pear.' //
            \endgl\xe
         \end{block}
     \end{column}
 
     \begin{column}{0.20\textwidth}
-        %\begin{block}{Foo}
-            \begin{center}
-                \Tree [.\shortstack{tror\deprel{FINV}}
-                    \shortstack{Nå\deprel{ADV}}
-                    [.\shortstack{myndigheter\deprel{SUBJ}}
-                    \shortstack{lokale\deprel{ATR}} ]
-                    [.\shortstack{var\deprel{DOBJ}}
-                        \shortstack{at\deprel{SBU}}
-                        \shortstack{bortføringen\deprel{SUBJ}}
-                        [.\shortstack{planlagt\deprel{infv}} \shortstack{nøye\deprel{ADV}} ] ]
-                    \shortstack{\vphantom{I}.\deprel{IP}} ]
-            \end{center}
-        %\end{block}
-
-        \vspace{5cm}
+        \vspace{3cm}
 
         %\begin{block}{Foo}
             \begin{center}
-                \Tree [.\shortstack{tror\deprel{FINV}}
-                    \shortstack{jeg\deprel{SUBJ}}
-                    \shortstack{ikke\deprel{ADV}}
-                    [.\shortstack{er\deprel{DOBJ}}
-                        \shortstack{det\deprel{SUBJ}}
-                    \shortstack{tilfeldig\deprel{SPRED}} ]
-                    \shortstack{\vphantom{I}.\deprel{IP}} ]
-            \end{center}
-        %\end{block}
-
-        \vspace{5cm}
-
-        %\begin{block}{Foo}
-            \begin{center}
-                \Tree [.\shortstack{har\deprel{FINV}}
-                        \shortstack{Per\deprel{SUBJ}}
-                        [.\shortstack{spist\deprel{INFV}}
-                        [.\shortstack{eple\deprel{DOBJ}}
-                            \shortstack{et\deprel{DET}}
-                        [.\shortstack{pære\deprel{KOORD}}
-                            \shortstack{og\deprel{KONJ}}
-                            \shortstack{en\deprel{DET}}  ] ] ]
+                \begin{tikzpicture}
+                    \Tree [.\shortstack{tror\deprel{FINV}}
+                        \shortstack{Nå\deprel{ADV}}
+                        [.\shortstack{myndigheter\deprel{SUBJ}}
+                        \shortstack{lokale\deprel{ATR}} ]
+                        [.\shortstack{var\deprel{DOBJ}}
+                            \shortstack{at\deprel{SBU}}
+                            \shortstack{bortføringen\deprel{SUBJ}}
+                            [.\shortstack{planlagt\deprel{infv}} \shortstack{nøye\deprel{ADV}} ] ]
                         \shortstack{\vphantom{I}.\deprel{IP}} ]
+                    \draw (-5.2, -8.2) node (medat_target) {} ;
+                \end{tikzpicture}
+            \end{center}
+        %\end{block}
+
+        \vspace{5cm}
+
+        %\begin{block}{Foo}
+            \begin{center}
+                \begin{tikzpicture}
+                    \Tree [.\shortstack{tror\deprel{FINV}}
+                        \shortstack{jeg\deprel{SUBJ}}
+                        \shortstack{ikke\deprel{ADV}}
+                        [.\shortstack{er\deprel{DOBJ}}
+                            \shortstack{det\deprel{SUBJ}}
+                        \shortstack{tilfeldig\deprel{SPRED}} ]
+                        \shortstack{\vphantom{I}.\deprel{IP}} ]
+                    \draw (-5.2, -4.1) node (utenat_target) {} ;
+                \end{tikzpicture}
+            \end{center}
+        %\end{block}
+
+        \vspace{7.5cm}
+
+        %\begin{block}{Foo}
+            \begin{center}
+                \begin{tikzpicture}
+                    \Tree [.\shortstack{har\deprel{FINV}}
+                            \shortstack{Per\deprel{SUBJ}}
+                            [.\shortstack{spist\deprel{INFV}}
+                            [.\shortstack{eple\deprel{DOBJ}}
+                                \shortstack{et\deprel{DET}}
+                            [.\shortstack{pære\deprel{KOORD}}
+                                \shortstack{og\deprel{KONJ}}
+                                \shortstack{en\deprel{DET}}  ] ] ]
+                            \shortstack{\vphantom{I}.\deprel{IP}} ]
+                    \draw (-5.2, -4.1) node (coord_target) {} ;
+                \end{tikzpicture}
             \end{center}
         %\end{block}
     \end{column}
@@ -197,5 +212,10 @@ Blogs & 5
         \end{block}
     \end{column}
 \end{columns}
-\end{document}
 
+\begin{tikzpicture}[overlay]
+    \draw[thick] (medat_from) .. controls +(2,0) and +(-5,-5) .. (medat_target);
+    \draw[thick] (utenat_from) .. controls +(20,0) and +(0,-5) .. (utenat_target);
+    \draw[thick] (coord_from) .. controls +(20,0) and +(0,-5) .. (coord_target);
+\end{tikzpicture}
+\end{document}
