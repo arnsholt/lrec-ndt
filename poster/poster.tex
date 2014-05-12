@@ -45,6 +45,9 @@
 \begin{document}
 \begin{columns}[t]
     \begin{column}{0.25\textwidth}
+        \newlength\interblock
+        \interblock=2cm
+
         \begin{block}{Introduction}
             \begin{itemize}
               \item The Norwegian Dependency Treebank (NDT) is a new syntactic treebank for Norwegian Bokmål and Norwegian Nynorsk, developed at the National Library of Norway
@@ -54,6 +57,7 @@
               \item Consistency and parsability comparable to other treebank projects
             \end{itemize}
         \end{block}
+        \vspace{\interblock}
 
         \begin{block}{Annotation principles}
           \begin{enumerate}
@@ -63,7 +67,9 @@
            \item \textbf{Easy retrieval:} It should be easy to retrieve specific constructions.
           \end{enumerate}
         \end{block}
-        \begin{block}{Annotation example 1: Complementizers}
+        \vspace{\interblock}
+
+        \begin{block}{Annotation 1: Complementizers}
 %          \begin{itemize}
 %           \item Subordinate clauses are always headed by the finite verb, not the complementizer, cf. (\ref{medat}) and the analysis in figure ?????
             \ex\label{medat}\begingl
@@ -81,7 +87,9 @@
            \endgl\xe
 %          \end{itemize}
         \end{block}
-        \begin{block}{Annotation example 2: Lexical and function words}
+        \vspace{\interblock}
+
+        \begin{block}{Annotation 2: Lexical and function words}
             \ex\label{coord}\begingl
                 \gla Per har spist et eple og en pære //
                 \glb Per has eaten an apple and a pear //
