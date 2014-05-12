@@ -70,22 +70,18 @@
         \vspace{\interblock}
 
         \begin{block}{Annotation 1: Complementizers}
-%          \begin{itemize}
-%           \item Subordinate clauses are always headed by the finite verb, not the complementizer, cf. (\ref{medat}) and the analysis in figure ?????
             \ex\label{medat}\begingl
                 \gla Nå tror lokale myndigheter at bortføringen var nøye planlagt. //
                 \glb now believe local authorities that.comp abduction+the was carefully planned //
                     \tikz \node[coordinate, xshift=28cm, yshift=-1cm] (medat_from) {};
                 \glft`Local authorities now believe that the abduction was carefully planned.' //
            \endgl\xe
-%           \item This makes it possible to have a unified analysis of subordinate clauses with and without a complementizer, cf. (\ref{utenat}) and the analysis in figure ????
             \ex\label{utenat}\begingl
                 \gla Jeg tror ikke det er tilfeldig. //
                 \glb I believe not it is accidental //
                     \tikz \node[coordinate, xshift=15cm, yshift=-1cm] (utenat_from) {};
                 \glft `I don't belive that it is accidental.' //
            \endgl\xe
-%          \end{itemize}
         \end{block}
         \vspace{\interblock}
 
@@ -102,58 +98,52 @@
     \begin{column}{0.20\textwidth}
         \vspace{3cm}
 
-        %\begin{block}{Foo}
-            \begin{center}
-                \begin{tikzpicture}
-                    \Tree [.\shortstack{tror\deprel{FINV}}
-                        \shortstack{Nå\deprel{ADV}}
-                        [.\shortstack{myndigheter\deprel{SUBJ}}
-                        \shortstack{lokale\deprel{ATR}} ]
-                        [.\shortstack{var\deprel{DOBJ}}
-                            \shortstack{at\deprel{SBU}}
-                            \shortstack{bortføringen\deprel{SUBJ}}
-                            [.\shortstack{planlagt\deprel{infv}} \shortstack{nøye\deprel{ADV}} ] ]
-                        \shortstack{\vphantom{I}.\deprel{IP}} ]
-                    \draw (-5.2, -8.2) node (medat_target) {} ;
-                \end{tikzpicture}
-            \end{center}
-        %\end{block}
+        \begin{center}
+            \begin{tikzpicture}
+                \Tree [.\shortstack{tror\deprel{FINV}}
+                    \shortstack{Nå\deprel{ADV}}
+                    [.\shortstack{myndigheter\deprel{SUBJ}}
+                    \shortstack{lokale\deprel{ATR}} ]
+                    [.\shortstack{var\deprel{DOBJ}}
+                        \shortstack{at\deprel{SBU}}
+                        \shortstack{bortføringen\deprel{SUBJ}}
+                        [.\shortstack{planlagt\deprel{infv}} \shortstack{nøye\deprel{ADV}} ] ]
+                    \shortstack{\vphantom{I}.\deprel{IP}} ]
+                \draw (-5.2, -8.2) node (medat_target) {} ;
+            \end{tikzpicture}
+        \end{center}
 
         \vspace{5cm}
 
-        %\begin{block}{Foo}
-            \begin{center}
-                \begin{tikzpicture}
-                    \Tree [.\shortstack{tror\deprel{FINV}}
-                        \shortstack{jeg\deprel{SUBJ}}
-                        \shortstack{ikke\deprel{ADV}}
-                        [.\shortstack{er\deprel{DOBJ}}
-                            \shortstack{det\deprel{SUBJ}}
-                        \shortstack{tilfeldig\deprel{SPRED}} ]
-                        \shortstack{\vphantom{I}.\deprel{IP}} ]
-                    \draw (-5.2, -4.1) node (utenat_target) {} ;
-                \end{tikzpicture}
-            \end{center}
-        %\end{block}
+        \begin{center}
+            \begin{tikzpicture}
+                \Tree [.\shortstack{tror\deprel{FINV}}
+                    \shortstack{jeg\deprel{SUBJ}}
+                    \shortstack{ikke\deprel{ADV}}
+                    [.\shortstack{er\deprel{DOBJ}}
+                        \shortstack{det\deprel{SUBJ}}
+                    \shortstack{tilfeldig\deprel{SPRED}} ]
+                    \shortstack{\vphantom{I}.\deprel{IP}} ]
+                \draw (-5.2, -4.1) node (utenat_target) {} ;
+            \end{tikzpicture}
+        \end{center}
 
         \vspace{7.5cm}
 
-        %\begin{block}{Foo}
-            \begin{center}
-                \begin{tikzpicture}
-                    \Tree [.\shortstack{har\deprel{FINV}}
-                            \shortstack{Per\deprel{SUBJ}}
-                            [.\shortstack{spist\deprel{INFV}}
-                            [.\shortstack{eple\deprel{DOBJ}}
-                                \shortstack{et\deprel{DET}}
-                            [.\shortstack{pære\deprel{KOORD}}
-                                \shortstack{og\deprel{KONJ}}
-                                \shortstack{en\deprel{DET}}  ] ] ]
-                            \shortstack{\vphantom{I}.\deprel{IP}} ]
-                    \draw (-5.2, -4.1) node (coord_target) {} ;
-                \end{tikzpicture}
-            \end{center}
-        %\end{block}
+        \begin{center}
+            \begin{tikzpicture}
+                \Tree [.\shortstack{har\deprel{FINV}}
+                        \shortstack{Per\deprel{SUBJ}}
+                        [.\shortstack{spist\deprel{INFV}}
+                        [.\shortstack{eple\deprel{DOBJ}}
+                            \shortstack{et\deprel{DET}}
+                        [.\shortstack{pære\deprel{KOORD}}
+                            \shortstack{og\deprel{KONJ}}
+                            \shortstack{en\deprel{DET}}  ] ] ]
+                        \shortstack{\vphantom{I}.\deprel{IP}} ]
+                \draw (-5.2, -4.1) node (coord_target) {} ;
+            \end{tikzpicture}
+        \end{center}
     \end{column}
 
     \begin{column}{0.45\textwidth}
@@ -178,18 +168,6 @@
                     \end{itemize}
                 \end{column}
             \end{columns}
-        \end{block}
-
-        \begin{block}{Composition}
-            \begin{tabular}{lr@{\%\hspace{0.5em}}}
-        \FL
-        Source & \multicolumn{1}{c}{Fraction} \ML
-Newspaper text & 82 \NN
-Government reports & 7 \NN
-Parliament transcripts & 6 \NN
-Blogs & 5
-        \LL
-            \end{tabular}
         \end{block}
 
         \begin{block}{Parseability}
@@ -218,6 +196,37 @@ Blogs & 5
                 \end{column}
             \end{columns}
         \end{block}
+
+        \begin{columns}[T]
+            \begin{column}{0.45\textwidth}
+                \begin{block}{Composition}
+                    \begin{tabular}{lr@{\%\hspace{0.5em}}}
+                        \FL
+                        Source & \multicolumn{1}{c}{Fraction} \ML
+                        Newspaper text & 82 \NN
+                        Government reports & 7 \NN
+                        Parliament transcripts & 6 \NN
+                        Blogs & 5
+                        \LL
+                    \end{tabular}
+                \end{block}
+            \end{column}
+
+            \begin{column}{0.1\textwidth}
+                % Shenanigans to force other two column outwards.
+            \end{column}
+
+            \begin{column}{0.45\textwidth}
+                \begin{block}{Access\phantom{p}}
+                    \begin{itemize}
+                        \item The NDT is freely available for all uses
+                        \item \url{http://www.nb.no/ English/
+                            Collection-and-Services/ Spraakbanken/
+                        Available-resources/ Text-Resources}
+                    \end{itemize}
+                \end{block}
+            \end{column}
+        \end{columns}
     \end{column}
 \end{columns}
 
