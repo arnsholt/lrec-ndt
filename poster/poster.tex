@@ -1,9 +1,10 @@
-\documentclass{ltgposter12}
+\documentclass[orientation=portrait]{ltgposter12}
 
 \usepackage{ctable}
 \usepackage{expex}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage{pgfornament}
 \usepackage{tikz-qtree}
 
 \newcommand\deprel[1]{\\\textsc{#1}}
@@ -11,42 +12,22 @@
 \tikzset{level distance=120pt}
 \tikzstyle{every picture}+=[remember picture]
 
-%% Alternativ stil på boksene.
-%\newskip\boxskip
-%\boxskip10em % Ekstra mellomrom mellom boksene.
-%
-%\setbeamertemplate{block begin}{
-%  \vskip\boxskip
-%  {\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}%
-%  \begin{beamercolorbox}[rounded=false,shadow=false,leftskip=0.5em,sep=0.5em]{block body}%
-%    \usebeamerfont{block body}%
-%    \begin{center}
-%      \usebeamerfont*{block title}\insertblocktitle
-%    \end{center}
-%    \ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
-%  }
-%\setbeamertemplate{block end}{
-%  \end{beamercolorbox}
-%}
-%
-%\setbeamerfont*{itemize/enumerate subbody}{parent=itemize/enumerate body}
-%\setbeamerfont*{itemize/enumerate subsubbody}{parent=itemize/enumerate body}
+\newlength\interblock
 
 \title{The Norwegian Dependency Treebank}
 \author{\bf Per Erik Solberg$^{\ast}$, Arne Skj{\ae}rholt$^{\dagger}$, 
         Lilja {\O}vrelid$^{\dagger}$, Kristin Hagen$^{\ddag}$, 
         and Janne Bondi Johannessen$^{\ddag}$}
 \institute{$^{\ast}$ Spr{\aa}kbanken, The National Library of Norway;
-    $^{\dagger}$ Department of Informatics, University of Oslo;
+    $^{\dagger}$ Department of Informatics, University of Oslo;\newline
     $^{\ddag}$ Department of Linguistics and Scandinavian Studies, University
         of Oslo}
 \conference{LREC 2014}
 
 \begin{document}
 \begin{columns}[t]
-    \begin{column}{0.25\textwidth}
-        \newlength\interblock
-        \interblock=2cm
+    \begin{column}{0.4\textwidth}
+        \interblock=30mm
 
         \begin{block}{Introduction}
             \begin{itemize}
@@ -68,23 +49,89 @@
           \end{enumerate}
         \end{block}
         \vspace{\interblock}
+    \end{column}
 
-        \begin{block}{Annotation 1: Complementizers}
-            \ex\label{medat}\begingl
-                \gla Nå tror lokale myndigheter at bortføringen var nøye planlagt. //
-                \glb now believe local authorities that.comp abduction+the was carefully planned //
-                    \tikz \node[coordinate, xshift=28cm, yshift=-1cm] (medat_from) {};
-                \glft`Local authorities now believe that the abduction was carefully planned.' //
-           \endgl\xe
-            \ex\label{utenat}\begingl
-                \gla Jeg tror ikke det er tilfeldig. //
-                \glb I believe not it is accidental //
-                    \tikz \node[coordinate, xshift=15cm, yshift=-1cm] (utenat_from) {};
-                \glft `I don't belive that it is accidental.' //
-           \endgl\xe
+    \begin{column}{0.5\textwidth}
+        \interblock=23.5mm
+
+        \begin{block}{Annotation process}
+            \begin{columns}[T]
+                \begin{column}{0.4\textwidth}
+                    \begin{enumerate}
+                        \item Tokenization and PoS tagging
+                        \item Correction of PoS tags by annotator
+                        \item Dependency parsing
+                        \item Correction of syntactic analyses
+                    \end{enumerate}
+                \end{column}
+
+                \begin{column}{0.52\textwidth}
+                    \begin{itemize}
+                        \item Two full-time annotators, both trained linguists
+                        \item PoS tagger: 96\% accuracy
+                        \item Parser: 84\% LAS/87\% UAS
+                        \item Good inter-annotator agreement, both as measured
+                            by labeled accuracy and Krippendorff's $\alpha$
+                    \end{itemize}
+                \end{column}
+            \end{columns}
         \end{block}
         \vspace{\interblock}
 
+        \begin{block}{Parseability}
+            \begin{itemize}
+                \item 80-10-10 train/development/test
+                \item Optimized setting found using MaltOptimizer
+                \item Malt, MST and Bohnet parsers evaluated on gold
+                    PoS tags
+                \item Bohnet\&Nivre parser jointly parses and PoS tags
+            \end{itemize}
+            \begin{tabular}{lll@{\hspace{2em}}ll}
+                \FL
+                & \multicolumn{2}{c@{\hspace{2em}}}{Bokm{\aa}l (BM)} & \multicolumn{2}{c}{Nynorsk (NN)} \NN
+                & UAS & LAS  & UAS & LAS \ML
+                Malt default & 88.02 & 84.57 & 87.09 & 83.59 \NN
+                Malt optimized & 91.96 & 89.61 & 91.53 & 89.41 \NN
+                MST  & 91.97 & 88.37 & 91.23 & 87.64 \NN
+                Bohnet (2010)  & {\bf 92.84} & {\bf 90.41} & {\bf 92.12} & {\bf 89.54} \NN\hline
+                Bohnet\&Nivre (2012) & 90.68 & 87.74 & 89.85 & 86.90
+                \LL
+            \end{tabular}
+        \end{block}
+    \end{column}
+\end{columns}
+
+\vspace{-2cm}
+\begin{center}
+    \pgfornament[width=0.4\textwidth]{86}
+\end{center}
+\vspace{2cm}
+
+\begin{columns}[T]
+    \begin{column}{0.6\textwidth}
+        \begin{block}{Annotation 1: Complementizers}
+            \begin{columns}[T]
+                \begin{column}{0.45\textwidth}
+                    \ex\label{medat}\begingl
+                        \gla Nå tror lokale myndigheter at bortføringen var nøye planlagt. //
+                        \glb now believe local authorities that.comp abduction+the was carefully planned //
+                            \tikz \node[coordinate, xshift=28cm, yshift=-1cm] (medat_from) {};
+                        \glft`Local authorities now believe that the abduction was carefully planned.' //
+                    \endgl\xe
+                \end{column}
+                \begin{column}{0.45\textwidth}
+                    \ex\label{utenat}\begingl
+                        \gla Jeg tror ikke det er tilfeldig. //
+                        \glb I believe not it is accidental //
+                            \tikz \node[coordinate, xshift=15cm, yshift=-1cm] (utenat_from) {};
+                        \glft `I don't belive that it is accidental.' //
+                    \endgl\xe
+                \end{column}
+            \end{columns}
+        \end{block}
+    \end{column}
+
+    \begin{column}{0.3\textwidth}
         \begin{block}{Annotation 2: Lexical and function words}
             \ex\label{coord}\begingl
                 \gla Per har spist et eple og en pære //
@@ -94,10 +141,10 @@
            \endgl\xe
         \end{block}
     \end{column}
+\end{columns}
 
-    \begin{column}{0.20\textwidth}
-        \vspace{3cm}
-
+\begin{columns}[T]
+    \begin{column}{0.3\textwidth}
         \begin{center}
             \begin{tikzpicture}
                 \Tree [.\shortstack{tror\deprel{FINV}}
@@ -109,12 +156,13 @@
                         \shortstack{bortføringen\deprel{SUBJ}}
                         [.\shortstack{planlagt\deprel{infv}} \shortstack{nøye\deprel{ADV}} ] ]
                     \shortstack{\vphantom{I}.\deprel{IP}} ]
-                \draw (-5.2, -8.2) node (medat_target) {} ;
+                \draw (1, 1) node (medat_target) {} ;
             \end{tikzpicture}
         \end{center}
 
-        \vspace{5cm}
+    \end{column}
 
+    \begin{column}{0.3\textwidth}
         \begin{center}
             \begin{tikzpicture}
                 \Tree [.\shortstack{tror\deprel{FINV}}
@@ -127,9 +175,9 @@
                 \draw (-5.2, -4.1) node (utenat_target) {} ;
             \end{tikzpicture}
         \end{center}
+    \end{column}
 
-        \vspace{7.5cm}
-
+    \begin{column}{0.3\textwidth}
         \begin{center}
             \begin{tikzpicture}
                 \Tree [.\shortstack{har\deprel{FINV}}
@@ -145,94 +193,38 @@
             \end{tikzpicture}
         \end{center}
     \end{column}
-
-    \begin{column}{0.45\textwidth}
-        \begin{block}{Annotation process}
-            \begin{columns}[T]
-                \begin{column}{0.45\textwidth}
-                    \begin{enumerate}
-                        \item Tokenization and PoS tagging
-                        \item Correction of PoS tags by annotator
-                        \item Dependency parsing
-                        \item Correction of syntactic analyses
-                    \end{enumerate}
-                \end{column}
-
-                \begin{column}{0.45\textwidth}
-                    \begin{itemize}
-                        \item Two full-time annotators, both trained linguists
-                        \item PoS tagger: 96\% accuracy
-                        \item Parser: 84\% LAS/87\% UAS
-                        \item Good inter-annotator agreement, both as measured
-                            by labeled accuracy and Krippendorff's $\alpha$
-                    \end{itemize}
-                \end{column}
-            \end{columns}
-        \end{block}
-
-        \begin{block}{Parseability}
-            \begin{columns}[T]
-                \begin{column}{0.45\textwidth}
-                    \begin{itemize}
-                        \item 80-10-10 train/development/test
-                        \item Optimized setting found using MaltOptimizer
-                        \item Malt, MST and Bohnet parsers evaluated on gold
-                            PoS tags
-                        \item Bohnet\&Nivre parser jointly parses and PoS tags
-                    \end{itemize}
-                \end{column}
-                \begin{column}{0.45\textwidth}
-                    \begin{tabular}{lll@{\hspace{2em}}ll}
-                        \FL
-                        & \multicolumn{2}{c@{\hspace{2em}}}{Bokm{\aa}l (BM)} & \multicolumn{2}{c}{Nynorsk (NN)} \NN
-                        & UAS & LAS  & UAS & LAS \ML
-                        Malt default & 88.02 & 84.57 & 87.09 & 83.59 \NN
-                        Malt optimized & 91.96 & 89.61 & 91.53 & 89.41 \NN
-                        MST  & 91.97 & 88.37 & 91.23 & 87.64 \NN
-                        Bohnet (2010)  & {\bf 92.84} & {\bf 90.41} & {\bf 92.12} & {\bf 89.54} \NN\hline
-                        Bohnet\&Nivre (2012) & 90.68 & 87.74 & 89.85 & 86.90
-                        \LL
-                    \end{tabular}
-                \end{column}
-            \end{columns}
-        \end{block}
-
-        \begin{columns}[T]
-            \begin{column}{0.45\textwidth}
-                \begin{block}{Composition}
-                    \begin{tabular}{lr@{\%\hspace{0.5em}}}
-                        \FL
-                        Source & \multicolumn{1}{c}{Fraction} \ML
-                        Newspaper text & 82 \NN
-                        Government reports & 7 \NN
-                        Parliament transcripts & 6 \NN
-                        Blogs & 5
-                        \LL
-                    \end{tabular}
-                \end{block}
-            \end{column}
-
-            \begin{column}{0.1\textwidth}
-                % Shenanigans to force other two column outwards.
-            \end{column}
-
-            \begin{column}{0.45\textwidth}
-                \begin{block}{Access\phantom{p}}
-                    \begin{itemize}
-                        \item The NDT is freely available for all uses
-                        \item \url{http://www.nb.no/ English/
-                            Collection-and-Services/ Spraakbanken/
-                        Available-resources/ Text-Resources}
-                    \end{itemize}
-                \end{block}
-            \end{column}
-        \end{columns}
-    \end{column}
 \end{columns}
 
-\begin{tikzpicture}[overlay]
-    \draw[thick] (medat_from) .. controls +(2,0) and +(-5,-5) .. (medat_target);
-    \draw[thick] (utenat_from) .. controls +(20,0) and +(0,-5) .. (utenat_target);
-    \draw[thick] (coord_from) .. controls +(20,0) and +(0,-5) .. (coord_target);
-\end{tikzpicture}
+\vspace{2cm}
+\begin{center}
+    \pgfornament[width=0.4\textwidth]{86}
+\end{center}
+\vspace{3cm}
+
+\begin{columns}[T]
+    \begin{column}{0.3\textwidth}
+        \begin{block}{Composition}
+            \begin{tabular}{lr@{\%\hspace{0.5em}}}
+                \FL
+                Source & \multicolumn{1}{c}{Fraction} \ML
+                Newspaper text & 82 \NN
+                Government reports & 7 \NN
+                Parliament transcripts & 6 \NN
+                Blogs & 5
+                \LL
+            \end{tabular}
+        \end{block}
+    \end{column}
+
+    \begin{column}{0.3\textwidth}
+        \begin{block}{Access\phantom{p}}
+            \begin{itemize}
+                \item The NDT is freely available for all uses
+                \item \url{http://www.nb.no/ English/
+                    Collection-and-Services/ Spraakbanken/
+                Available-resources/ Text-Resources}
+            \end{itemize}
+        \end{block}
+    \end{column}
+\end{columns}
 \end{document}
